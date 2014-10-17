@@ -38,9 +38,9 @@ Example text field:
 See `bower.json` and `index.html` in the `master` branch for a full list / more details
 
 ## Install in your project
-- Install with [Angular-Formly](https://github.com/formly-js/angular-formly)
+- Install [Angular-Formly](https://github.com/formly-js/angular-formly)
 
-- Install with Angular-Formly: Bootstrap Templates
+- Install Angular-Formly: Bootstrap Templates
  `$ bower install angular-formly-templates-bootstrap --save`
 
 - Include the javascript file in your index.html, Formly comes in the following flavors:
