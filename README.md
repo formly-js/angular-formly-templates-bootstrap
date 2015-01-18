@@ -24,7 +24,7 @@ Example text field:
 	</div>
 ```
 
-### Demo : http://formly-js.github.io/angular-formly-templates-bootstrap/
+### Demo : http://formly-js.github.io/angular-formly
 
 ## Dependencies
 - Required to use Formly:
