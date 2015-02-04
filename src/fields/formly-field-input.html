@@ -1,4 +1,4 @@
-<input type="number"
+<input type="{{options.templateOptions.type}}"
        class="form-control"
        id="{{id}}"
        formly-dynamic-name="id"
@@ -7,6 +7,4 @@
        aria-describedby="{{id}}_description"
        ng-required="options.templateOptions.required"
        ng-disabled="options.templateOptions.disabled"
-       min="{{options.templateOptions.min}}"
-       max="{{options.templateOptions.max}}"
        ng-model="model[options.key]">

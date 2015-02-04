@@ -1,31 +1,10 @@
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/formly-js/angular-formly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/formly-js/angular-formly.svg)](https://travis-ci.org/formly-js/angular-formly)
 [![Coverage Status](https://img.shields.io/coveralls/formly-js/angular-formly.svg)](https://coveralls.io/r/formly-js/angular-formly)
 
 ## Angular-Formly: Bootstrap Template
-This is a template for Angular-Formly which adds template basic files with no css classes. Each field is wrapped in a div. This library is not standalone and requires angular-formly to be present and loaded.
+This is a template for Angular-Formly which adds templates with classes specific to bootstrap. Each field is wrapped in a div. This library is not standalone and requires angular-formly to be present and loaded.
 
-Example text field:
-```html
-	<div>
-		<label for="{{id}}">
-			{{options.label || 'Text'}}
-			{{options.required ? '*' : ''}}
-		</label>
-		<input type="text"
-		       id="{{id}}"
-		       formly-dynamic-name="options.key"
-		       formly-custom-validation="options.validators"
-		       placeholder="{{options.placeholder}}"
-		       aria-describedby="{{id}}_description"
-		       ng-required="options.required"
-		       ng-disabled="options.disabled"
-		       ng-model="result[options.key || index]">
-		<p id="{{id}}_description" ng-if="options.description">{{options.description}}</p>
-	</div>
-```
-
-### Demo : http://formly-js.github.io/angular-formly
+### Demo http://formly-js.github.io/angular-formly
 
 ## Dependencies
 - Required to use Formly:
@@ -41,16 +20,21 @@ Example text field:
 
 - Install Angular-Formly: Bootstrap Templates
  `$ bower install angular-formly angular-formly-templates-bootstrap --save`
+
  or
+
  `$ npm install angular-formly angular-formly-templates-bootstrap --save`
 
 - Include the javascript file in your index.html, Formly comes in the following flavors:
  `<script src="bower_components/angular-formly/dist/formly.min.js"></script>`
  `<script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>`
+
  and
-  `angular.module('yourModule', ['formly', 'formlyBootstrap']);`
+
+ `angular.module('yourModule', ['formly', 'formlyBootstrap']);`
 
  or
+
  `angular.module('yourModule', [require('angular-formly'), require('angular-formly-templates-bootstrap')]);`
 
 ## Documentation
@@ -58,6 +42,8 @@ Example text field:
 See [Angular-Formly](https://github.com/formly-js/angular-formly) for formly core documentation.
 
 ### Common Properties
+
+NOTE: All of these properties will be under the `templateOptions` property as of angular-formly 3.0.0
 
 ---
 ##### label (string)
@@ -104,10 +90,11 @@ See [Angular-Formly](https://github.com/formly-js/angular-formly) for formly cor
 ### Fields
 
 ### Form Fields
+
 Below is a detailed description of each form fields and its custom properties.
 
-#### Text form field
->The text field allows single line input with a input element set to `type='text'`. It doesn't have any custom properties.
+#### Input form field
+>The input uses the <input> element and allows you to specify it's type via the type property
 
 ##### default (string, optional)
 
@@ -116,8 +103,11 @@ _Example text field_
 	{
 		"type": "text",
 		"key": "firstName",
-		"placeholder": "jane doe",
-		"label": "First name"
+		"templateOptions": {
+		  "type": "email", // or url, or text, etc.
+      "placeholder": "jane doe",
+      "label": "First name"
+		}
 	}
 ```
 
@@ -128,16 +118,19 @@ _Example text field_
 ##### default (string, optional)
 
 ##### lines (number, optional)
->`lines` sets the rows attribute for the textarea element. If unset, the default is 2 lines.
+>`lines` sets the rows attribute for the textarea element.
 
 _Example textarea field_
 ```json
 	{
 		"type": "textarea",
 		"key": "about",
-		"placeholder": "I like puppies",
-		"label": "Tell me about yourself",
-		"lines": 4
+		"templateOptions": {
+      "placeholder": "I like puppies",
+      "label": "Tell me about yourself",
+      "rows": 4,
+      "cols": 15
+		}
 	}
 ```
 
@@ -152,8 +145,9 @@ _Example checkbox field_
 	{
 		"type": "checkbox",
 		"key": "checkThis",
-		"label": "Check this box",
-		"default": true
+		"templateUrl": {
+      "label": "Check this box"
+		}
 	}
 ```
 
@@ -169,22 +163,23 @@ _Example radio field_
 	{
 		"key": "triedEmber",
 		"type": "radio",
-		"label": "Have you tried EmberJs yet?",
-		"default": "no",
-		"options": [
-			{
-				"name": "Yes, and I love it!",
-				"value": "yesyes"
-			},
-			{
-				"name": "Yes, but I'm not a fan...",
-				"value": "yesno"
-			},
-			{
-				"name": "Nope",
-				"value": "no"
-			}
-		]
+		"templateOptions": {
+      "label": "Have you tried EmberJs yet?",
+      "options": [
+        {
+          "name": "Yes, and I love it!",
+          "value": "yesyes"
+        },
+        {
+          "name": "Yes, but I'm not a fan...",
+          "value": "yesno"
+        },
+        {
+          "name": "Nope",
+          "value": "no"
+        }
+      ]
+		}
 	}
 ```
 
@@ -203,48 +198,51 @@ _Example select field_
 	{
 		"key": "transportation",
 		"type": "select",
-		"label": "How do you get around in the city",
-		"options": [
-			{
-				"name": "Car"
-			},
-			{
-				"name": "Helicopter"
-			},
-			{
-				"name": "Sport Utility Vehicle"
-			},
-			{
-				"name": "Bicycle",
-				"group": "low emissions"
-			},
-			{
-				"name": "Skateboard",
-				"group": "low emissions"
-			},
-			{
-				"name": "Walk",
-				"group": "low emissions"
-			},
-			{
-				"name": "Bus",
-				"group": "low emissions"
-			},
-			{
-				"name": "Scooter",
-				"group": "low emissions"
-			},
-			{
-				"name": "Train",
-				"group": "low emissions"
-			},
-			{
-				"name": "Hot Air Baloon",
-				"group": "low emissions"
-			}
-		]
+		"templateOptions": {
+      "label": "How do you get around in the city",
+      "options": [
+        {
+          "name": "Car"
+        },
+        {
+          "name": "Helicopter"
+        },
+        {
+          "name": "Sport Utility Vehicle"
+        },
+        {
+          "name": "Bicycle",
+          "group": "low emissions"
+        },
+        {
+          "name": "Skateboard",
+          "group": "low emissions"
+        },
+        {
+          "name": "Walk",
+          "group": "low emissions"
+        },
+        {
+          "name": "Bus",
+          "group": "low emissions"
+        },
+        {
+          "name": "Scooter",
+          "group": "low emissions"
+        },
+        {
+          "name": "Train",
+          "group": "low emissions"
+        },
+        {
+          "name": "Hot Air Baloon",
+          "group": "low emissions"
+        }
+      ]
+		}
 	}
 ```
+
 
 ---
 #### Number form field
@@ -258,70 +256,20 @@ _Example select field_
 ##### max (number, optional)
 >`max` sets maximum acceptable value for the input.
 
-##### minlength (number, optional)
->`minlength` sets minimum number of characters for the input. If a number less than this value it will not be submitted with the form. eg 1000 is 4 characters long and if `minlength` is set to 5, it would not be sent. Currently there is no error displayed to the user if they do not meet the requirement.
-
-##### maxlength (number, optional)
->`maxlength` sets maximum number of characters for the input. If a number is greater than this value it will not be submitted with the form. eg 1000 is 4 characters long and if `maxlength` is set to 2, it would not be sent. Currently there is no error displayed to the user if they do not meet the requirement.
-
 _Example number field_
 ```json
 	{
 		"key": "love",
 		"type": "number",
-		"label": "How much love?",
-		"default": 2,
-		"min": 0,
-		"max": 100,
-		"required": true
+		"templateOptions": {
+      "label": "How much love?",
+      "min": 0,
+      "max": 100,
+      "required": true
+		}
 	}
 ```
 
----
-#### Password form field
->The password field allows password input, it uses an input with `type='password'`.
-##### default (string, optional)
-
-##### trimWhitespace (boolean, optional)
-Unlike other formly fields, which use Angular's default setting to trim leading and trailing whitespace, the password field captures whitespace. You can override this by setting `trimWhitespace` to `true`.
-
-_Example password field_
-```json
-	{
-		"key": "password",
-		"type": "password",
-		"label": "Password"
-	}
-```
-
----
-#### Hidden form field
->The hidden field allows hidden input, it uses an input with `type='hidden'`.
-
-##### default (number or string, required)
-
-_Example password field_
-```json
-	{
-		"key": "hiddenCode",
-		"type": "hidden"
-	}
-```
-
----
-#### Email form field
->The email field allows email input, it uses an input with `type='email'`. Browsers will provide basic email address validation by default.
-
-##### default (string, optional)
-
-_Example password field_
-```json
-	{
-		"key": "email",
-		"type": "email",
-		"placeholder": "janedoe@gmail.com"
-	}
-```
 
 ## Contributing
 
