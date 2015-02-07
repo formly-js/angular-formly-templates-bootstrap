@@ -1,10 +1,4 @@
-<select id="{{id}}"
-        class="form-control"
-        formly-dynamic-name="id"
-        formly-custom-validation="options.validators"
-        aria-describedby="{{id}}_description"
+<select class="form-control"
         ng-model="model[options.key]"
-        ng-required="options.templateOptions.required"
-        ng-disabled="options.templateOptions.disabled"
         ng-options="option.value as option.name group by option.group for option in options.templateOptions.options">
 </select>

@@ -2,12 +2,6 @@
 	<label>
 		<input type="checkbox"
            class="formly-field-checkbox"
-		       id="{{id}}"
-		       formly-dynamic-name="id"
-		       formly-custom-validation="options.validators"
-		       aria-describedby="{{id}}_description"
-		       ng-required="options.templateOptions.required"
-		       ng-disabled="options.templateOptions.disabled"
 		       ng-model="model[options.key]">
 		{{options.templateOptions.label}}
 		{{options.templateOptions.required ? '*' : ''}}

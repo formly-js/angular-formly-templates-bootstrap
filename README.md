@@ -60,13 +60,6 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 >`undefined`
 
 ---
-##### hide (boolean)
->`hide` is used to conditionally show the input. When true, the input is hidden (meant to be used with a watch).
-
-###### Default
->`undefined`
-
----
 ##### disabled (boolean)
 >`disabled` is used to add the disabled attribute to a form field.
 
@@ -145,7 +138,7 @@ _Example checkbox field_
 	{
 		"type": "checkbox",
 		"key": "checkThis",
-		"templateUrl": {
+		"templateOptions": {
       "label": "Check this box"
 		}
 	}
@@ -242,34 +235,6 @@ _Example select field_
 		}
 	}
 ```
-
-
----
-#### Number form field
->The number field allows input that is restricted to numbers. Browsers also provide minimal ui to increase and decrease the current value.
-
-##### default (number, optional)
-
-##### min (number, optional)
->`min` sets minimum acceptable value for the input.
-
-##### max (number, optional)
->`max` sets maximum acceptable value for the input.
-
-_Example number field_
-```json
-	{
-		"key": "love",
-		"type": "number",
-		"templateOptions": {
-      "label": "How much love?",
-      "min": 0,
-      "max": 100,
-      "required": true
-		}
-	}
-```
-
 
 ## Contributing
 
