@@ -9,10 +9,14 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
     {
       name: 'bootstrapHasError',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-has-error.html'
+    },
+    {
+      name: 'bootstrapAdons',
+      templateUrl: 'wrappers/formly-wrappers-bootstrap-addons.html'
     }
   ]);
 
-  var commonWrappers = ['bootstrapLabel', 'bootstrapHasError'];
+  var commonWrappers = ['bootstrapAdons','bootstrapLabel', 'bootstrapHasError'];
 
   angular.forEach(['radio', 'select'], function(fieldName) {
     formlyConfigProvider.setType({

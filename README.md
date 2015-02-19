@@ -84,6 +84,20 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 ###### Default
 >`undefined`
 
+---
+##### addonLeft (object)
+>`addonLeft` is used to add an add-on on the left of a field. The object accepts two properties: `text` that sets a simple text and `class` that sets classes to the add-on.
+
+###### Default
+>`undefined`
+
+---
+##### addonRight (object)
+>`addonRight` is used to add an add-on on the right of a field. The object accepts two properties: `text` that sets a simple text and `class` that sets classes to the add-on.
+
+###### Default
+>`undefined`
+
 ### Fields
 
 ### Form Fields

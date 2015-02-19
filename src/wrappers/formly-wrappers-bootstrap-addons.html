@@ -1,0 +1,11 @@
+<div ng-class="{'input-group': to.addonLeft || to.addonRight}">
+    <div class="input-group-addon" ng-if="to.addonLeft">
+        <span ng-class="'{{to.addonLeft.class}}'" ng-if="to.addonLeft.class"></span>
+        <span ng-if="to.addonLeft.text">{{to.addonLeft.text}}</span>
+    </div>
+    <formly-transclude></formly-transclude>
+    <div class="input-group-addon" ng-if="to.addonRight">
+        <span ng-class="'{{to.addonRight.class}}'" ng-if="to.addonRight.class"></span>
+        <span ng-if="to.addonRight.text">{{to.addonRight.text}}</span>
+    </div>
+</div>

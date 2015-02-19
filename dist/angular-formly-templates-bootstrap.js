@@ -26,10 +26,14 @@ angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function 
     {
       name: 'bootstrapHasError',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-has-error.html'
+    },
+    {
+      name: 'bootstrapAdons',
+      templateUrl: 'wrappers/formly-wrappers-bootstrap-addons.html'
     }
   ]);
 
-  var commonWrappers = ['bootstrapLabel', 'bootstrapHasError'];
+  var commonWrappers = ['bootstrapAdons','bootstrapLabel', 'bootstrapHasError'];
 
   angular.forEach(['radio', 'select'], function(fieldName) {
     formlyConfigProvider.setType({
@@ -108,6 +112,11 @@ angular.module('formlyBootstrap').run(['$templateCache', function($templateCache
 
   $templateCache.put('fields/formly-field-select.html',
     "<select class=form-control ng-model=model[options.key] ng-options=\"option.value as option.name group by option.group for option in options.templateOptions.options\"></select>"
+  );
+
+
+  $templateCache.put('wrappers/formly-wrappers-bootstrap-addons.html',
+    "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\"><div class=input-group-addon ng-if=to.addonLeft><span ng-class=\"'{{to.addonLeft.class}}'\" ng-if=to.addonLeft.class></span> <span ng-if=to.addonLeft.text>{{to.addonLeft.text}}</span></div><formly-transclude></formly-transclude><div class=input-group-addon ng-if=to.addonRight><span ng-class=\"'{{to.addonRight.class}}'\" ng-if=to.addonRight.class></span> <span ng-if=to.addonRight.text>{{to.addonRight.text}}</span></div></div>"
   );
 
 
