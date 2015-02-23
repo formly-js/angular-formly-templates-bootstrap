@@ -73,19 +73,21 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
     });
 
 
-    formlyConfig.templateManipulators.postWrapper.push(function (template, options) {
-        if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
-            return template;
-        }
-        return $http.get('other/formly-templates-bootstrap-addons.html', {
-            cache: $templateCache
-        }).then(function (response) {
-            return response.data.replace('<formly-transclude></formly-transclude>', template);
-        });
-    });
-
     function getFieldTemplateUrl(name) {
         return 'fields/formly-field-' + name + '.html';
     }
 
+});
+
+angular.module('formlyBootstrap').run(function(formlyConfig, $http, $templateCache) {
+  formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
+    if (options.type !=='input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
+      return template;
+    }
+    return $http.get('other/formly-other-bootstrap-addons.html', {
+      cache: $templateCache
+    }).then(function(response) {
+      return response.data.replace('<formly-transclude></formly-transclude>', template);
+    });
+  });
 });

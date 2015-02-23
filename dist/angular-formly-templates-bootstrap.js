@@ -90,21 +90,23 @@ angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function 
     });
 
 
-    formlyConfig.templateManipulators.postWrapper.push(function (template, options) {
-        if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
-            return template;
-        }
-        return $http.get('other/formly-templates-bootstrap-addons.html', {
-            cache: $templateCache
-        }).then(function (response) {
-            return response.data.replace('<formly-transclude></formly-transclude>', template);
-        });
-    });
-
     function getFieldTemplateUrl(name) {
         return 'fields/formly-field-' + name + '.html';
     }
 
+}]);
+
+angular.module('formlyBootstrap').run(["formlyConfig", "$http", "$templateCache", function(formlyConfig, $http, $templateCache) {
+  formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
+    if (options.type !=='input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
+      return template;
+    }
+    return $http.get('other/formly-other-bootstrap-addons.html', {
+      cache: $templateCache
+    }).then(function(response) {
+      return response.data.replace('<formly-transclude></formly-transclude>', template);
+    });
+  });
 }]);
 angular.module('formlyBootstrap').run(['$templateCache', function($templateCache) {
   'use strict';
@@ -131,11 +133,6 @@ angular.module('formlyBootstrap').run(['$templateCache', function($templateCache
 
   $templateCache.put('wrappers/formly-wrappers-bootstrap-label.html',
     "<div><label for={{id}} class=control-label>{{options.templateOptions.label}} {{options.templateOptions.required ? '*' : ''}}</label><formly-transclude></formly-transclude></div>"
-  );
-
-
-  $templateCache.put('other/formly-wrappers-bootstrap-addons.html',
-    "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\"><div class=input-group-addon ng-if=to.addonLeft><i class=\"'{{to.addonLeft.class}}'\" ng-if=to.addonLeft.class></i> <span ng-if=to.addonLeft.text>{{to.addonLeft.text}}</span></div><formly-transclude></formly-transclude><div class=input-group-addon ng-if=to.addonRight><i class=\"'{{to.addonRight.class}}'\" ng-if=to.addonRight.class></i> <span ng-if=to.addonRight.text>{{to.addonRight.text}}</span></div></div>"
   );
 
 }]);
