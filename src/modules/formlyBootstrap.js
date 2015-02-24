@@ -84,7 +84,10 @@ angular.module('formlyBootstrap').run(function (formlyConfig, $http, $templateCa
     if (options.type !== 'input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
       return template;
     }
-    var tmpl = $templateCache.get('other/formly-other-bootstrap-addons.html');
-    return tmpl.replace('<formly-transclude></formly-transclude>', template);
+    return $http.get('other/formly-other-bootstrap-addons.html', {
+      cache: $templateCache
+    }).then(function (response) {
+      return response.data.replace('<formly-transclude></formly-transclude>', template);
+    });
   });
 });
