@@ -18,20 +18,19 @@
 angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function configFormlyVanilla(formlyConfigProvider) {
   'use strict';
 
-  formlyConfigProvider.setWrapper([
-    {
+  formlyConfigProvider.setWrapper([{
       name: 'bootstrapLabel',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-label.html'
-    },
+        },
     {
       name: 'bootstrapHasError',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-has-error.html'
-    }
-  ]);
+        }
+    ]);
 
   var commonWrappers = ['bootstrapLabel', 'bootstrapHasError'];
 
-  angular.forEach(['radio', 'select'], function(fieldName) {
+  angular.forEach(['radio', 'select'], function (fieldName) {
     formlyConfigProvider.setType({
       name: fieldName,
       templateUrl: getFieldTemplateUrl(fieldName),
@@ -51,7 +50,10 @@ angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function 
     wrapper: commonWrappers,
     defaultOptions: {
       data: {
-        ngModelAttributes: {rows: 'rows', cols: 'cols'}
+        ngModelAttributes: {
+          rows: 'rows',
+          cols: 'cols'
+        }
       }
     }
   });
@@ -72,9 +74,9 @@ angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function 
       if (modelEls) {
         el.append(
           '<p id="' + scope.id + '_description"' +
-              'class="help-block"' +
-              'ng-if="options.templateOptions.description">' +
-            '{{options.templateOptions.description}}' +
+          'class="help-block"' +
+          'ng-if="options.templateOptions.description">' +
+          '{{options.templateOptions.description}}' +
           '</p>'
         );
         modelEls.attr('aria-describedby', scope.id + '_description');
@@ -87,12 +89,27 @@ angular.module('formlyBootstrap', ['formly'], ["formlyConfigProvider", function 
     }
   });
 
+
   function getFieldTemplateUrl(name) {
     return 'fields/formly-field-' + name + '.html';
   }
 
 }]);
 
+angular.module('formlyBootstrap').run(["formlyConfig", "$http", "$templateCache", function (formlyConfig, $http, $templateCache) {
+  formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
+    if (options.type !== 'input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
+      return template;
+    }
+    var tmpl = $templateCache.get('other/formly-other-bootstrap-addons.html');
+    return tmpl.replace('<formly-transclude></formly-transclude>', template);
+   ///return $http.get('other/formly-other-bootstrap-addons.html', {
+   ///  cache: $templateCache
+   ///}).then(function (response) {
+   ///  return response.data.replace('<formly-transclude></formly-transclude>', template);
+   ///});
+  });
+}]);
 angular.module('formlyBootstrap').run(['$templateCache', function($templateCache) {
   'use strict';
 
@@ -118,6 +135,11 @@ angular.module('formlyBootstrap').run(['$templateCache', function($templateCache
 
   $templateCache.put('wrappers/formly-wrappers-bootstrap-label.html',
     "<div><label for={{id}} class=control-label>{{options.templateOptions.label}} {{options.templateOptions.required ? '*' : ''}}</label><formly-transclude></formly-transclude></div>"
+  );
+
+
+  $templateCache.put('other/formly-other-bootstrap-addons.html',
+    "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\"><div class=input-group-addon ng-if=to.addonLeft><i class={{to.addonLeft.class}} ng-if=to.addonLeft.class></i> <span ng-if=to.addonLeft.text>{{to.addonLeft.text}}</span></div><formly-transclude></formly-transclude><div class=input-group-addon ng-if=to.addonRight><i class={{to.addonRight.class}} ng-if=to.addonRight.class></i> <span ng-if=to.addonRight.text>{{to.addonRight.text}}</span></div></div>"
   );
 
 }]);

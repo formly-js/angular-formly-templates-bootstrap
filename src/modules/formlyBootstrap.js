@@ -14,7 +14,7 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
 
   var commonWrappers = ['bootstrapLabel', 'bootstrapHasError'];
 
-  angular.forEach(['radio', 'select'], function(fieldName) {
+  angular.forEach(['radio', 'select'], function (fieldName) {
     formlyConfigProvider.setType({
       name: fieldName,
       templateUrl: getFieldTemplateUrl(fieldName),
@@ -34,7 +34,10 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
     wrapper: commonWrappers,
     defaultOptions: {
       data: {
-        ngModelAttributes: {rows: 'rows', cols: 'cols'}
+        ngModelAttributes: {
+          rows: 'rows',
+          cols: 'cols'
+        }
       }
     }
   });
@@ -47,17 +50,17 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
   });
 
   formlyConfigProvider.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
-    if (options.templateOptions && angular.isDefined(options.templateOptions.description) &&
-      options.type !== 'radio' && options.type !== 'checkbox') {
+    if (options.templateOptions && angular.isDefined(options.templateOptions.description) && 
+        options.type !== 'radio' && options.type !== 'checkbox') {
       var el = angular.element('<a></a>');
       el.append(template);
       var modelEls = angular.element(el[0].querySelectorAll('[ng-model]'));
       if (modelEls) {
         el.append(
           '<p id="' + scope.id + '_description"' +
-              'class="help-block"' +
-              'ng-if="options.templateOptions.description">' +
-            '{{options.templateOptions.description}}' +
+          'class="help-block"' +
+          'ng-if="options.templateOptions.description">' +
+          '{{options.templateOptions.description}}' +
           '</p>'
         );
         modelEls.attr('aria-describedby', scope.id + '_description');
@@ -70,8 +73,22 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
     }
   });
 
+
   function getFieldTemplateUrl(name) {
     return 'fields/formly-field-' + name + '.html';
   }
 
+});
+
+angular.module('formlyBootstrap').run(function (formlyConfig, $http, $templateCache) {
+  formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
+    if (options.type !== 'input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
+      return template;
+    }
+    return $http.get('other/formly-other-bootstrap-addons.html', {
+      cache: $templateCache
+    }).then(function (response) {
+      return response.data.replace('<formly-transclude></formly-transclude>', template);
+    });
+  });
 });

@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: preBuiltDest + '/',
-            src: ['fields/**/*.html', 'wrappers/**/*.html'],
+            src: ['fields/**/*.html', 'wrappers/**/*.html', 'other/**/*.html'],
             dest: templatesFile
           }
         ]
