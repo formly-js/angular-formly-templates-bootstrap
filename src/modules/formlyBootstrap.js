@@ -1,15 +1,16 @@
 angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(formlyConfigProvider) {
   'use strict';
 
-  formlyConfigProvider.setWrapper([{
+  formlyConfigProvider.setWrapper([
+    {
       name: 'bootstrapLabel',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-label.html'
-        },
+    },
     {
       name: 'bootstrapHasError',
       templateUrl: 'wrappers/formly-wrappers-bootstrap-has-error.html'
-        }
-    ]);
+    }
+  ]);
 
   var commonWrappers = ['bootstrapLabel', 'bootstrapHasError'];
 
@@ -49,8 +50,8 @@ angular.module('formlyBootstrap', ['formly'], function configFormlyVanilla(forml
   });
 
   formlyConfigProvider.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
-    if (options.templateOptions && angular.isDefined(options.templateOptions.description) &&
-      options.type !== 'radio' && options.type !== 'checkbox') {
+    if (options.templateOptions && angular.isDefined(options.templateOptions.description) && 
+        options.type !== 'radio' && options.type !== 'checkbox') {
       var el = angular.element('<a></a>');
       el.append(template);
       var modelEls = angular.element(el[0].querySelectorAll('[ng-model]'));
