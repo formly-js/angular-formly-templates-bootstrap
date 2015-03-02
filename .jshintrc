@@ -25,6 +25,11 @@
   "browser": true,
   "node": true,
   "globals": {
-    "angular": true
+    "angular": true,
+
+    "ON_TEST": true,
+    "ON_DEV": true,
+    "ON_PROD": true,
+    "VERSION": true
   }
 }

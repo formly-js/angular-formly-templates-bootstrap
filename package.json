@@ -1,6 +1,6 @@
 {
   "name": "angular-formly-templates-bootstrap",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "author": "Astrism <astrisms@gmail.com>",
   "contributors": [
     "Astrism <astrisms@gmail.com>",
@@ -19,34 +19,31 @@
     }
   ],
   "scripts": {
-    "build": "./node_modules/.bin/grunt build"
+    "build:dist": "node node_modules/webpack/bin/webpack.js",
+    "build:minify": "node node_modules/webpack/bin/webpack.js --config webpack.config.minify.js",
+    "build": "npm run build:dist; npm run build:minify",
+    "test": "node node_modules/karma/bin/karma start karma.conf.js",
+    "test:single": "node node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "test:ci": "node node_modules/karma/bin/karma start karma.conf.ci.js",
+    "watch": "node node_modules/webpack/bin/webpack.js --watch",
+    "start": "npm run watch & npm run test",
+    "release": "git push && npm publish && git push --tags"
   },
   "description": "Angular-Formly plugin which outputs bootstrap compatible form fields.",
-  "dependencies": {
-    "angular": "^1.2.22",
-    "angular-formly": "^2.0.0"
+  "peerDependencies": {
+    "angular": "^1.2.x",
+    "angular-formly": "^3.3.x",
+    "api-check": "^6.0.0"
   },
   "devDependencies": {
-    "bower": "1.2.7",
-    "connect-livereload": "~0.4.0",
-    "grunt": "~0.4.1",
-    "grunt-angular-templates": "~0.5.1",
-    "grunt-bower-task": "~0.3.4",
-    "grunt-cli": "~0.1.11",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.6.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-uglify": "~0.3.2",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-gh-pages": "~0.9.0",
-    "grunt-mocha": "^0.4.11",
-    "grunt-ng-annotate": "^0.3.2",
-    "grunt-ngmin": "0.0.3",
-    "grunt-umd": "^2.2.1",
-    "load-grunt-tasks": "^0.6.0",
+    "babel-core": "^4.5.5",
+    "babel-loader": "^4.0.0",
+    "deep-extend": "^0.3.2",
+    "jshint": "2.6.0",
+    "jshint-loader": "^0.8.3",
     "lodash-node": "^2.4.1",
-    "time-grunt": "^0.4.0"
+    "ng-annotate": "^0.15.4",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.6.0"
   }
 }

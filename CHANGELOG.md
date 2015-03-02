@@ -1,5 +1,4 @@
-## 3.0.2
+## 4.0.0
 
-Added addonLeft and addonRight to place add-ons on fields
-
-Created changelog.md
+- Added addonLeft and addonRight to place add-ons on fields
+- Adding api-check dependency
