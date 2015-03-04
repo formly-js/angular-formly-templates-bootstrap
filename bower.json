@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "angular": ">=1.2.x",
-    "angular-formly": ">=3.3.0",
-    "api-check": "~6.0.0",
+    "angular-formly": ">=4.0.5",
+    "api-check": "~6.0.10",
     "bootstrap": "~3.2.0"
   },
   "devDependencies": {

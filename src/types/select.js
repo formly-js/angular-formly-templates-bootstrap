@@ -2,22 +2,20 @@ export default  ngModule => {
   ngModule.config(addSelectType);
 
   function addSelectType(formlyConfigProvider, formlyBootstrapApiCheck) {
+    const c = formlyBootstrapApiCheck;
     formlyConfigProvider.setType({
       name: 'select',
       template: require('./select.html'),
       wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-      validateOptions(options) {
-        formlyBootstrapApiCheck.warn(formlyBootstrapApiCheck.shape({
-          templateOptions: formlyBootstrapApiCheck.shape({
-            options: formlyBootstrapApiCheck.arrayOf(formlyBootstrapApiCheck.object),
-            labelProp: formlyBootstrapApiCheck.string.optional,
-            valueProp: formlyBootstrapApiCheck.string.optional,
-            groupProp: formlyBootstrapApiCheck.string.optional
-          })
-        }), arguments, {
-          prefix: 'select type'
-        });
-      }
+      apiCheck: {
+        templateOptions: c.shape({
+          options: c.arrayOf(c.object),
+          labelProp: c.string.optional,
+          valueProp: c.string.optional,
+          groupProp: c.string.optional
+        })
+      },
+      apiCheckInstance: c
     });
   }
 };

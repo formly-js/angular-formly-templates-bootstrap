@@ -2,6 +2,7 @@ export default  ngModule => {
   ngModule.config(addTextareaType);
 
   function addTextareaType(formlyConfigProvider, formlyBootstrapApiCheck) {
+    const c = formlyBootstrapApiCheck;
     formlyConfigProvider.setType({
       name: 'textarea',
       template: '<textarea class="form-control" ng-model="model[options.key]"></textarea>',
@@ -12,16 +13,13 @@ export default  ngModule => {
           cols: {attribute: 'cols'}
         }
       },
-      validateOptions(options) {
-        formlyBootstrapApiCheck.warn(formlyBootstrapApiCheck.shape({
-          templateOptions: formlyBootstrapApiCheck.shape({
-            rows: formlyBootstrapApiCheck.number.optional,
-            cols: formlyBootstrapApiCheck.number.optional
-          })
-        }), arguments, {
-          prefix: 'textarea type'
-        });
-      }
+      apiCheck: {
+        templateOptions: c.shape({
+          rows: c.number.optional,
+          cols: c.number.optional
+        })
+      },
+      apiCheckInstance: c
     });
   }
 };
