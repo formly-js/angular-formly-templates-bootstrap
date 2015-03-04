@@ -3,6 +3,7 @@
     <label>
       <input type="radio"
              id="{{id + '_'+ $index}}"
+             tabindex="0"
              ng-value="option[to.valueProp || 'value']"
              ng-model="model[options.key]">
       {{option[to.labelProp || 'name']}}

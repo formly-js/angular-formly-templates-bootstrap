@@ -1,3 +1,7 @@
+# 4.0.3
+
+- Fixing tabindex on radios
+
 # 4.0.2
 
 - Switching from `validateOptions` to `apiCheck`.
