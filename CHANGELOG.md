@@ -1,3 +1,7 @@
+# 4.0.5
+
+- Fixing bug with multiCheckbox where no initial value would cause an error.
+
 # 4.0.4
 
 - Fixing multiCheckbox to initialize properly
