@@ -23,6 +23,13 @@ export default ngModule => {
           change: setModel
         };
 
+        // initialize the checkboxes check property
+        const modelValue = $scope.model[opts.key];
+        const valueProp = to.valueProp || 'value';
+        angular.forEach(to.options, function(v, index) {
+          $scope.multiCheckbox.checked[index] = modelValue.indexOf(v[valueProp]) !== -1;
+        });
+
         function setModel() {
           $scope.model[opts.key] = [];
           angular.forEach($scope.multiCheckbox.checked, (checkbox, index) => {

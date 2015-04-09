@@ -1,3 +1,8 @@
+# 4.0.4
+
+- Fixing multiCheckbox to initialize properly
+- Fixing npm angular version to include beta versions.
+
 # 4.0.3
 
 - Fixing tabindex on radios
