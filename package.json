@@ -1,6 +1,6 @@
 {
   "name": "angular-formly-templates-bootstrap",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "author": "Astrism <astrisms@gmail.com>",
   "contributors": [
     "Astrism <astrisms@gmail.com>",
@@ -19,20 +19,20 @@
     }
   ],
   "scripts": {
-    "build:dist": "node node_modules/webpack/bin/webpack.js",
-    "build:minify": "node node_modules/webpack/bin/webpack.js --config webpack.config.minify.js",
+    "build:dist": "webpack",
+    "build:minify": "webpack --config webpack.config.minify.js",
     "build": "npm run build:dist; npm run build:minify",
-    "test": "node node_modules/karma/bin/karma start karma.conf.js",
-    "test:single": "node node_modules/karma/bin/karma start karma.conf.js --single-run",
-    "test:ci": "node node_modules/karma/bin/karma start karma.conf.ci.js",
-    "watch": "node node_modules/webpack/bin/webpack.js --watch",
+    "test": "karma start karma.conf.js",
+    "test:single": "karma start karma.conf.js --single-run",
+    "test:ci": "karma start karma.conf.ci.js",
+    "watch": "webpack --watch",
     "start": "npm run watch & npm run test",
     "release": "git push && npm publish && git push --tags"
   },
   "description": "Angular-Formly plugin which outputs bootstrap compatible form fields.",
   "peerDependencies": {
     "angular": "^1.2.x || >= 1.4.0-beta.0 || >= 1.5.0-beta.0",
-    "angular-formly": "^4.0.5",
+    "angular-formly": ">=4.0.5",
     "api-check": "^6.0.10"
   },
   "devDependencies": {

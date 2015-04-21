@@ -1,3 +1,7 @@
+# 4.0.6
+
+- Fixing issue with the new api-check API.
+
 # 4.0.5
 
 - Fixing bug with multiCheckbox where no initial value would cause an error.

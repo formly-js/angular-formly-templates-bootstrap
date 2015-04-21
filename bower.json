@@ -1,6 +1,6 @@
 {
   "name": "angular-formly-templates-bootstrap",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "authors": [
     "Astrism <astrisms@gmail.com>"
   ],
@@ -29,8 +29,8 @@
   "dependencies": {
     "angular": ">=1.2.x",
     "angular-formly": ">=4.0.5",
-    "api-check": "~6.0.10",
-    "bootstrap": "~3.2.0"
+    "api-check": ">=6.0.10",
+    "bootstrap": ">=3.2.0"
   },
   "devDependencies": {
     "chai": "~1.9.1",
