@@ -7,16 +7,17 @@ export default ngModule => {
       class: formlyBootstrapApiCheck.string.optional,
       text: formlyBootstrapApiCheck.string.optional
     }).strict.optional;
+    const api = formlyBootstrapApiCheck.shape({
+      templateOptions: formlyBootstrapApiCheck.shape({
+        addonLeft: addonChecker,
+        addonRight: addonChecker
+      })
+    });
     formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
       if (options.type !== 'input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
         return template;
       }
-      formlyBootstrapApiCheck.warn(formlyBootstrapApiCheck.shape({
-          templateOptions: formlyBootstrapApiCheck.shape({
-            addonLeft: addonChecker,
-            addonRight: addonChecker
-          })
-        }), {length: 1, 0: options});
+      formlyBootstrapApiCheck.warn([api], [options]);
       return addonTemplate.replace('<formly-transclude></formly-transclude>', template);
     });
   }
