@@ -206,52 +206,53 @@ _Example radio field_
 
 _Example select field_
 ```json
-	{
-		"key": "transportation",
-		"type": "select",
-		"templateOptions": {
-      "label": "How do you get around in the city",
-      "options": [
-        {
-          "name": "Car"
-        },
-        {
-          "name": "Helicopter"
-        },
-        {
-          "name": "Sport Utility Vehicle"
-        },
-        {
-          "name": "Bicycle",
-          "group": "low emissions"
-        },
-        {
-          "name": "Skateboard",
-          "group": "low emissions"
-        },
-        {
-          "name": "Walk",
-          "group": "low emissions"
-        },
-        {
-          "name": "Bus",
-          "group": "low emissions"
-        },
-        {
-          "name": "Scooter",
-          "group": "low emissions"
-        },
-        {
-          "name": "Train",
-          "group": "low emissions"
-        },
-        {
-          "name": "Hot Air Baloon",
-          "group": "low emissions"
-        }
-      ]
-		}
-	}
+{
+  "key": "transportation",
+  "type": "select",
+  "templateOptions": {
+    "label": "How do you get around in the city",
+    "valueProp": "name",
+    "options": [
+      {
+        "name": "Car"
+      },
+      {
+        "name": "Helicopter"
+      },
+      {
+        "name": "Sport Utility Vehicle"
+      },
+      {
+        "name": "Bicycle",
+        "group": "low emissions"
+      },
+      {
+        "name": "Skateboard",
+        "group": "low emissions"
+      },
+      {
+        "name": "Walk",
+        "group": "low emissions"
+      },
+      {
+        "name": "Bus",
+        "group": "low emissions"
+      },
+      {
+        "name": "Scooter",
+        "group": "low emissions"
+      },
+      {
+        "name": "Train",
+        "group": "low emissions"
+      },
+      {
+        "name": "Hot Air Baloon",
+        "group": "low emissions"
+      }
+    ]
+  }
+}
 ```
 
 ## Contributing
