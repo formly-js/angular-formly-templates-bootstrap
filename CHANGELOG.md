@@ -1,3 +1,7 @@
+# 4.0.7
+
+- Updating peerDependency with api-check.
+
 # 4.0.6
 
 - Fixing issue with the new api-check API.
