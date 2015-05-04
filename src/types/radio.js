@@ -7,6 +7,9 @@ export default ngModule => {
       name: 'radio',
       template: require('./radio.html'),
       wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+      defaultOptions: {
+        noFormControl: false
+      },
       apiCheck: {
         templateOptions: c.shape({
           options: c.arrayOf(c.object),

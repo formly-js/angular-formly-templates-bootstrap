@@ -7,6 +7,9 @@ export default ngModule => {
       name: 'multiCheckbox',
       template: require('./multiCheckbox.html'),
       wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+      defaultOptions: {
+        noFormControl: false
+      },
       apiCheck: {
         templateOptions: c.shape({
           options: c.arrayOf(c.object),
