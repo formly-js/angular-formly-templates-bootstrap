@@ -1,3 +1,7 @@
+# 4.0.9
+
+- Allowing descriptions on all types
+
 # 4.0.8
 
 - Fixing issue #17 with form control not getting set on multiCheckbox and radio types.
