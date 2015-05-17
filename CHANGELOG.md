@@ -1,3 +1,8 @@
+# 4.1.0
+
+- Bug in last release
+- Last release should have been a minor version update.
+
 # 4.0.10
 
 - Making an easier api for custom `ng-options` for `select`.
