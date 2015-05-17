@@ -1,6 +1,7 @@
 # 4.0.10
 
 - Making an easier api for custom `ng-options` for `select`.
+- Removing inline-source-map so it's not included in minified code.
 
 # 4.0.9
 
