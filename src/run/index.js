@@ -5,9 +5,3 @@ export default ngModule => {
   addons(ngModule);
   description(ngModule);
 };
-
-//export default ngModule => {
-//  require('./addons')(ngModule);
-//  require('./description')(ngModule);
-//};
-//
