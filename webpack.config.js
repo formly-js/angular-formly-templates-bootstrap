@@ -5,10 +5,6 @@ var path = require('path');
 
 var exclude = /node_modules/;
 
-var ngAnnotateLoader = here('loaders/ng-annotate.js');
-console.log(ngAnnotateLoader);
-
-
 var packageJsonString = fs.readFileSync('package.json', 'utf8');
 var packageJson = JSON.parse(packageJsonString);
 console.log('building version', packageJson.version);
@@ -29,6 +25,8 @@ var baseConfig = {
     library: 'ngFormlyTemplatesBootstrap',
     libraryTarget: 'umd'
   },
+
+  devtool: 'source-map',
 
 
   stats: {
@@ -64,14 +62,12 @@ var baseConfig = {
   module: {
     loaders: [
       {test: /\.html$/, loader: 'raw', exclude: exclude},
-      {test: /\.js$/, loader: ngAnnotateLoader + '!babel!jshint', exclude: exclude}
+      {test: /\.js$/, loader: 'ng-annotate!babel!jshint', exclude: exclude}
     ]
   }
 };
 
-var devConfig = {
-  devtool: 'inline-source-map'
-};
+var devConfig = {};
 
 
 var prodConfig = {
@@ -79,7 +75,6 @@ var prodConfig = {
     filename: 'angular-formly-templates-bootstrap.min.js',
     path: here('dist')
   },
-  devtool: 'source-map',
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
