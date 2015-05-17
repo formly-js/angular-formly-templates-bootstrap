@@ -1,0 +1,4 @@
+<select class="form-control"
+        ng-model="model[options.key]"
+        ng-options="option[to.valueProp || 'value'] as option[to.labelProp || 'name'] group by option[to.groupProp || 'group'] for option in to.options">
+</select>

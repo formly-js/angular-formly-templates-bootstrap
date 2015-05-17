@@ -1,3 +1,7 @@
+# 4.0.10
+
+- Making an easier api for custom `ng-options` for `select`.
+
 # 4.0.9
 
 - Allowing descriptions on all types
