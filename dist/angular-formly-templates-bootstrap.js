@@ -1,4 +1,4 @@
-// angular-formly-templates-bootstrap version 4.3.0 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+// angular-formly-templates-bootstrap version 4.3.1 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -71,13 +71,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  ngModule.config(addCheckboxType);
+	  ngModule.config(addRadioType);
 	
-	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
+	  function addRadioType(formlyConfigProvider, formlyBootstrapApiCheck) {
 	    var c = formlyBootstrapApiCheck;
 	    formlyConfigProvider.setType({
-	      name: 'multiCheckbox',
-	      template: __webpack_require__(21),
+	      name: 'radio',
+	      template: __webpack_require__(20),
 	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
 	      defaultOptions: {
 	        noFormControl: false
@@ -89,38 +89,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          valueProp: c.string.optional
 	        })
 	      },
-	      apiCheckInstance: c,
-	      controller: /* @ngInject */["$scope", function controller($scope) {
-	        var to = $scope.to;
-	        var opts = $scope.options;
-	        $scope.multiCheckbox = {
-	          checked: [],
-	          change: setModel
-	        };
-	
-	        // initialize the checkboxes check property
-	        var modelValue = $scope.model[opts.key];
-	        if (angular.isArray(modelValue)) {
-	          (function () {
-	            var valueProp = to.valueProp || 'value';
-	            angular.forEach(to.options, function (v, index) {
-	              $scope.multiCheckbox.checked[index] = modelValue.indexOf(v[valueProp]) !== -1;
-	            });
-	          })();
-	        }
-	
-	        function setModel() {
-	          $scope.model[opts.key] = [];
-	          angular.forEach($scope.multiCheckbox.checked, function (checkbox, index) {
-	            if (checkbox) {
-	              $scope.model[opts.key].push(to.options[index][to.valueProp || 'value']);
-	            }
-	          });
-	        }
-	      }]
+	      apiCheckInstance: c
 	    });
 	  }
-	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addRadioType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
 	};
 
 	module.exports = exports['default'];
@@ -194,12 +166,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  __webpack_require__(10)(ngModule);
-	  __webpack_require__(1)(ngModule);
 	  __webpack_require__(12)(ngModule);
-	  __webpack_require__(9)(ngModule);
 	  __webpack_require__(13)(ngModule);
 	  __webpack_require__(14)(ngModule);
+	  __webpack_require__(1)(ngModule);
+	  __webpack_require__(15)(ngModule);
+	  __webpack_require__(16)(ngModule);
 	};
 	
 	module.exports = exports['default'];
@@ -216,11 +188,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _addons = __webpack_require__(15);
+	var _addons = __webpack_require__(9);
 	
 	var _addons2 = _interopRequireDefault(_addons);
 	
-	var _description = __webpack_require__(16);
+	var _description = __webpack_require__(10);
 	
 	var _description2 = _interopRequireDefault(_description);
 	
@@ -248,28 +220,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  ngModule.config(addRadioType);
+	  ngModule.run(addAddonsManipulator);
 	
-	  function addRadioType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setType({
-	      name: 'radio',
-	      template: __webpack_require__(20),
-	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-	      defaultOptions: {
-	        noFormControl: false
-	      },
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          options: c.arrayOf(c.object),
-	          labelProp: c.string.optional,
-	          valueProp: c.string.optional
-	        })
-	      },
-	      apiCheckInstance: c
+	  function addAddonsManipulator(formlyConfig, formlyBootstrapApiCheck) {
+	    var addonTemplate = __webpack_require__(19);
+	    var addonChecker = formlyBootstrapApiCheck.shape({
+	      'class': formlyBootstrapApiCheck.string.optional,
+	      text: formlyBootstrapApiCheck.string.optional,
+	      onClick: formlyBootstrapApiCheck.func.optional
+	    }).strict.optional;
+	    var api = formlyBootstrapApiCheck.shape({
+	      templateOptions: formlyBootstrapApiCheck.shape({
+	        addonLeft: addonChecker,
+	        addonRight: addonChecker
+	      })
+	    });
+	    formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
+	      if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
+	        return template;
+	      }
+	      formlyBootstrapApiCheck.warn([api], [options]);
+	      return addonTemplate.replace('<formly-transclude></formly-transclude>', template);
 	    });
 	  }
-	  addRadioType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addAddonsManipulator.$inject = ["formlyConfig", "formlyBootstrapApiCheck"];
 	};
 
 	module.exports = exports['default'];
@@ -285,23 +259,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  ngModule.config(addCheckboxType);
+	  ngModule.run(addDescriptionManipulator);
 	
-	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setType({
-	      name: 'checkbox',
-	      template: __webpack_require__(19),
-	      wrapper: ['bootstrapHasError'],
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          label: c.string
-	        })
-	      },
-	      apiCheckInstance: c
+	  function addDescriptionManipulator(formlyConfig) {
+	    formlyConfig.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
+	      if (angular.isDefined(options.templateOptions.description)) {
+	        var el = document.createElement('div');
+	        el.appendChild(angular.element(template)[0]);
+	        el.appendChild(angular.element('<p id="' + scope.id + '_description"' + 'class="help-block"' + 'ng-if="to.description">' + '{{to.description}}' + '</p>')[0]);
+	        var modelEls = angular.element(el.querySelectorAll('[ng-model]'));
+	        if (modelEls) {
+	          modelEls.attr('aria-describedby', scope.id + '_description');
+	        }
+	        return el.innerHTML;
+	      } else {
+	        return template;
+	      }
 	    });
 	  }
-	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addDescriptionManipulator.$inject = ["formlyConfig"];
 	};
 
 	module.exports = exports['default'];
@@ -323,7 +299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    prefix: 'angular-formly-bootstrap'
 	  }
 	}));
-	ngModule.constant('formlyBootstrapVersion', ("4.3.0"));
+	ngModule.constant('formlyBootstrapVersion', ("4.3.1"));
 	
 	__webpack_require__(5)(ngModule);
 	__webpack_require__(6)(ngModule);
@@ -334,6 +310,103 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addCheckboxType);
+	
+	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
+	    var c = formlyBootstrapApiCheck;
+	    formlyConfigProvider.setType({
+	      name: 'checkbox',
+	      template: __webpack_require__(21),
+	      wrapper: ['bootstrapHasError'],
+	      apiCheck: {
+	        templateOptions: c.shape({
+	          label: c.string
+	        })
+	      },
+	      apiCheckInstance: c
+	    });
+	  }
+	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addCheckboxType);
+	
+	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
+	    var c = formlyBootstrapApiCheck;
+	    formlyConfigProvider.setType({
+	      name: 'multiCheckbox',
+	      template: __webpack_require__(22),
+	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+	      defaultOptions: {
+	        noFormControl: false
+	      },
+	      apiCheck: {
+	        templateOptions: c.shape({
+	          options: c.arrayOf(c.object),
+	          labelProp: c.string.optional,
+	          valueProp: c.string.optional
+	        })
+	      },
+	      apiCheckInstance: c,
+	      controller: /* @ngInject */["$scope", function controller($scope) {
+	        var to = $scope.to;
+	        var opts = $scope.options;
+	        $scope.multiCheckbox = {
+	          checked: [],
+	          change: setModel
+	        };
+	
+	        // initialize the checkboxes check property
+	        var modelValue = $scope.model[opts.key];
+	        if (angular.isArray(modelValue)) {
+	          (function () {
+	            var valueProp = to.valueProp || 'value';
+	            angular.forEach(to.options, function (v, index) {
+	              $scope.multiCheckbox.checked[index] = modelValue.indexOf(v[valueProp]) !== -1;
+	            });
+	          })();
+	        }
+	
+	        function setModel() {
+	          $scope.model[opts.key] = [];
+	          angular.forEach($scope.multiCheckbox.checked, function (checkbox, index) {
+	            if (checkbox) {
+	              $scope.model[opts.key].push(to.options[index][to.valueProp || 'value']);
+	            }
+	          });
+	        }
+	      }]
+	    });
+	  }
+	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -358,7 +431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -406,7 +479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -445,79 +518,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.run(addAddonsManipulator);
-	
-	  function addAddonsManipulator(formlyConfig, formlyBootstrapApiCheck) {
-	    var addonTemplate = __webpack_require__(22);
-	    var addonChecker = formlyBootstrapApiCheck.shape({
-	      'class': formlyBootstrapApiCheck.string.optional,
-	      text: formlyBootstrapApiCheck.string.optional,
-	      onClick: formlyBootstrapApiCheck.func.optional
-	    }).strict.optional;
-	    var api = formlyBootstrapApiCheck.shape({
-	      templateOptions: formlyBootstrapApiCheck.shape({
-	        addonLeft: addonChecker,
-	        addonRight: addonChecker
-	      })
-	    });
-	    formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
-	      if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
-	        return template;
-	      }
-	      formlyBootstrapApiCheck.warn([api], [options]);
-	      return addonTemplate.replace('<formly-transclude></formly-transclude>', template);
-	    });
-	  }
-	  addAddonsManipulator.$inject = ["formlyConfig", "formlyBootstrapApiCheck"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.run(addDescriptionManipulator);
-	
-	  function addDescriptionManipulator(formlyConfig) {
-	    formlyConfig.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
-	      if (angular.isDefined(options.templateOptions.description)) {
-	        var el = document.createElement('div');
-	        el.appendChild(angular.element(template)[0]);
-	        el.appendChild(angular.element('<p id="' + scope.id + '_description"' + 'class="help-block"' + 'ng-if="to.description">' + '{{to.description}}' + '</p>')[0]);
-	        var modelEls = angular.element(el.querySelectorAll('[ng-model]'));
-	        if (modelEls) {
-	          modelEls.attr('aria-describedby', scope.id + '_description');
-	        }
-	        return el.innerHTML;
-	      } else {
-	        return template;
-	      }
-	    });
-	  }
-	  addDescriptionManipulator.$inject = ["formlyConfig"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -533,7 +533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"checkbox\">\n\t<label>\n\t\t<input type=\"checkbox\"\n           class=\"formly-field-checkbox\"\n\t\t       ng-model=\"model[options.key]\">\n\t\t{{to.label}}\n\t\t{{to.required ? '*' : ''}}\n\t</label>\n</div>\n"
+	module.exports = "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\">\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonLeft\"\n         ng-style=\"{cursor: to.addonLeft.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonLeft.onClick(options, this)\">\n        <i class=\"{{to.addonLeft.class}}\" ng-if=\"to.addonLeft.class\"></i>\n        <span ng-if=\"to.addonLeft.text\">{{to.addonLeft.text}}</span>\n    </div>\n    <formly-transclude></formly-transclude>\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonRight\"\n         ng-style=\"{cursor: to.addonRight.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonRight.onClick(options, this)\">\n        <i class=\"{{to.addonRight.class}}\" ng-if=\"to.addonRight.class\"></i>\n        <span ng-if=\"to.addonRight.text\">{{to.addonRight.text}}</span>\n    </div>\n</div>\n"
 
 /***/ },
 /* 20 */
@@ -545,13 +545,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"radio-group\">\n  <div ng-repeat=\"(key, option) in to.options\" class=\"checkbox\">\n    <label>\n      <input type=\"checkbox\"\n             id=\"{{id + '_'+ $index}}\"\n             ng-model=\"multiCheckbox.checked[$index]\"\n             ng-change=\"multiCheckbox.change()\">\n      {{option[to.labelProp || 'name']}}\n    </label>\n  </div>\n</div>\n"
+	module.exports = "<div class=\"checkbox\">\n\t<label>\n\t\t<input type=\"checkbox\"\n           class=\"formly-field-checkbox\"\n\t\t       ng-model=\"model[options.key]\">\n\t\t{{to.label}}\n\t\t{{to.required ? '*' : ''}}\n\t</label>\n</div>\n"
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\">\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonLeft\"\n         ng-style=\"{cursor: to.addonLeft.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonLeft.onClick(options, scope)\">\n        <i class=\"{{to.addonLeft.class}}\" ng-if=\"to.addonLeft.class\"></i>\n        <span ng-if=\"to.addonLeft.text\">{{to.addonLeft.text}}</span>\n    </div>\n    <formly-transclude></formly-transclude>\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonRight\"\n         ng-style=\"{cursor: to.addonRight.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonRight.onClick(options, scope)\">\n        <i class=\"{{to.addonRight.class}}\" ng-if=\"to.addonRight.class\"></i>\n        <span ng-if=\"to.addonRight.text\">{{to.addonRight.text}}</span>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"radio-group\">\n  <div ng-repeat=\"(key, option) in to.options\" class=\"checkbox\">\n    <label>\n      <input type=\"checkbox\"\n             id=\"{{id + '_'+ $index}}\"\n             ng-model=\"multiCheckbox.checked[$index]\"\n             ng-change=\"multiCheckbox.change()\">\n      {{option[to.labelProp || 'name']}}\n    </label>\n  </div>\n</div>\n"
 
 /***/ }
 /******/ ])
