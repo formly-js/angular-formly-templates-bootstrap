@@ -5,7 +5,8 @@ export default ngModule => {
     var addonTemplate = require('./addons.html');
     const addonChecker = formlyBootstrapApiCheck.shape({
       class: formlyBootstrapApiCheck.string.optional,
-      text: formlyBootstrapApiCheck.string.optional
+      text: formlyBootstrapApiCheck.string.optional,
+      onClick: formlyBootstrapApiCheck.func.optional
     }).strict.optional;
     const api = formlyBootstrapApiCheck.shape({
       templateOptions: formlyBootstrapApiCheck.shape({

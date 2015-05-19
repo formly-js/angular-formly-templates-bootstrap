@@ -1,3 +1,7 @@
+# 4.3.0
+
+- Adding `onClick` to addons
+
 # 4.2.0
 
 - Allowing any type to have an addon.
