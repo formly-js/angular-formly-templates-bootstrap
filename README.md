@@ -1,28 +1,26 @@
 [![Build Status](https://travis-ci.org/formly-js/angular-formly.svg)](https://travis-ci.org/formly-js/angular-formly)
 [![Coverage Status](https://img.shields.io/coveralls/formly-js/angular-formly.svg)](https://coveralls.io/r/formly-js/angular-formly)
 
-## Angular-Formly: Bootstrap Template
-This is a template for Angular-Formly which adds templates with classes specific to bootstrap. Each field is wrapped in a div. This library is not standalone and requires angular-formly to be present and loaded.
+## angular-formly: Bootstrap Template
 
-### NOTICE: UPGRADING FROM 2.0 to 3.0?
+This is a template for angular-formly which adds templates with classes specific to bootstrap. Each field is wrapped in a div. This library is not standalone and requires angular-formly to be present and loaded.
 
-There were some [significant changes](https://github.com/formly-js/angular-formly/blob/master/CHANGELOG.md) that you'll want to be aware of. In order to upgrade and get all the cool features, you're going to need to change your field configurations. [Here is a tool](http://jsbin.com/ruwoke) that should help make that process easier. Also, if you are not able to update the configuration very easily, see [this issue](https://github.com/formly-js/angular-formly/issues/162) for ideas on how to ease things a little.
-
-### Demo http://formly-js.github.io/angular-formly
+### Demo http://angular-formly.com
 
 ## Dependencies
-- Required to use Formly:
- - Angular
- - Angular-Formly
+- Required to use these templates:
+ - angular
+ - angular-formly
+ - api-check
 
 - Dev dependencies to build Formly
  - npm
 
 
 ## Install in your project
-- Install [Angular-Formly](https://github.com/formly-js/angular-formly)
+- Install [angular-formly](https://github.com/formly-js/angular-formly)
 
-- Install Angular-Formly: Bootstrap Templates
+- Install angular-formly: Bootstrap Templates
  `$ bower install angular-formly angular-formly-templates-bootstrap --save`
 
  or
@@ -43,7 +41,7 @@ There were some [significant changes](https://github.com/formly-js/angular-forml
 
 ## Documentation
 
-See [Angular-Formly](https://github.com/formly-js/angular-formly) for formly core documentation.
+See [angular-formly](http://docs.angular-formly.com) for formly core documentation.
 
 ### Common Properties
 
@@ -86,14 +84,14 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 
 ---
 ##### addonLeft (object)
->`addonLeft` is used to add an add-on on the left of a field. The object accepts two properties: `text` that sets a simple text and `class` that sets classes to the add-on.
+>`addonLeft` is used to add an add-on on the left of a field. The object accepts three properties: `text` that sets a simple text, `onClick` will add a `cursor:pointer` and an ng-click to the addon (invoked with the options and scope), and `class` that sets classes to the add-on.
 
 ###### Default
 >`undefined`
 
 ---
 ##### addonRight (object)
->`addonRight` is used to add an add-on on the right of a field. The object accepts two properties: `text` that sets a simple text and `class` that sets classes to the add-on.
+>`addonRight` is used to add an add-on on the right of a field. The object accepts three properties: `text` that sets a simple text, `onClick` will add a `cursor:pointer` and an ng-click to the addon (invoked with the options and scope), and `class` that sets classes to the add-on.
 
 ###### Default
 >`undefined`
@@ -111,15 +109,15 @@ Below is a detailed description of each form fields and its custom properties.
 
 _Example text field_
 ```json
-	{
-		"type": "text",
-		"key": "firstName",
-		"templateOptions": {
-		  "type": "email", // or url, or text, etc.
-      "placeholder": "jane doe",
-      "label": "First name"
-		}
-	}
+{
+  "type": "input",
+  "key": "firstName",
+  "templateOptions": {
+    "type": "email", // or url, or text, etc.
+    "placeholder": "jane doe",
+    "label": "First name"
+  }
+}
 ```
 
 ---
@@ -133,16 +131,16 @@ _Example text field_
 
 _Example textarea field_
 ```json
-	{
-		"type": "textarea",
-		"key": "about",
-		"templateOptions": {
-      "placeholder": "I like puppies",
-      "label": "Tell me about yourself",
-      "rows": 4,
-      "cols": 15
-		}
-	}
+{
+  "type": "textarea",
+  "key": "about",
+  "templateOptions": {
+    "placeholder": "I like puppies",
+    "label": "Tell me about yourself",
+    "rows": 4,
+    "cols": 15
+  }
+}
 ```
 
 ---
@@ -153,13 +151,13 @@ _Example textarea field_
 
 _Example checkbox field_
 ```json
-	{
-		"type": "checkbox",
-		"key": "checkThis",
-		"templateOptions": {
-      "label": "Check this box"
-		}
-	}
+{
+  "type": "checkbox",
+  "key": "checkThis",
+  "templateOptions": {
+    "label": "Check this box"
+  }
+}
 ```
 
 ---
@@ -171,27 +169,27 @@ _Example checkbox field_
 
 _Example radio field_
 ```json
-	{
-		"key": "triedEmber",
-		"type": "radio",
-		"templateOptions": {
-      "label": "Have you tried EmberJs yet?",
-      "options": [
-        {
-          "name": "Yes, and I love it!",
-          "value": "yesyes"
-        },
-        {
-          "name": "Yes, but I'm not a fan...",
-          "value": "yesno"
-        },
-        {
-          "name": "Nope",
-          "value": "no"
-        }
-      ]
-		}
-	}
+{
+  "key": "triedEmber",
+  "type": "radio",
+  "templateOptions": {
+    "label": "Have you tried EmberJs yet?",
+    "options": [
+      {
+        "name": "Yes, and I love it!",
+        "value": "yesyes"
+      },
+      {
+        "name": "Yes, but I'm not a fan...",
+        "value": "yesno"
+      },
+      {
+        "name": "Nope",
+        "value": "no"
+      }
+    ]
+  }
+}
 ```
 
 ---
@@ -261,5 +259,5 @@ Please see the [CONTRIBUTING Guidelines](CONTRIBUTING.md).
 
 ## Thanks
 
-A special thanks to [Nimbly](http://gonimbly.com) for creating/sponsoring Angular-Formly's development.
+A special thanks to [Nimbly](http://gonimbly.com) for creating/sponsoring angular-formly's development.
 Thanks to [Kent C. Dodds](https://github.com/kentcdodds) for his continued support on the project.
