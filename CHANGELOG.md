@@ -1,3 +1,7 @@
+# 4.3.1
+
+- Addon: Fixing the scope that's passed to `onClick`.
+
 # 4.3.0
 
 - Adding `onClick` to addons
