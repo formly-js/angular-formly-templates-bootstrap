@@ -1,3 +1,7 @@
+# 4.2.0
+
+- Allowing any type to have an addon.
+
 # 4.1.0
 
 - Bug in last release

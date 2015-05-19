@@ -14,7 +14,7 @@ export default ngModule => {
       })
     });
     formlyConfig.templateManipulators.preWrapper.push(function(template, options) {
-      if (options.type !== 'input' || (!options.templateOptions.addonLeft && !options.templateOptions.addonRight)) {
+      if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
         return template;
       }
       formlyBootstrapApiCheck.warn([api], [options]);
