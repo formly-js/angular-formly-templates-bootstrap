@@ -52,7 +52,7 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 >`label` is used to add an html label to each field.
 
 ###### Default
->A default is set for each field based on its type. ie `Text`, `Checkbox`, `Password`
+>`undefined`
 
 ---
 ##### required (boolean)
@@ -105,8 +105,6 @@ Below is a detailed description of each form fields and its custom properties.
 #### Input form field
 >The input uses the <input> element and allows you to specify it's type via the type property
 
-##### default (string, optional)
-
 _Example text field_
 ```json
 {
@@ -123,8 +121,6 @@ _Example text field_
 ---
 #### Textarea form field
 >The textarea field creates multiline input with a textarea element.
-
-##### default (string, optional)
 
 ##### lines (number, optional)
 >`lines` sets the rows attribute for the textarea element.
@@ -146,8 +142,6 @@ _Example textarea field_
 ---
 #### Checkbox form field
 >The checkbox field allows checkbox input with a input element set to `type='checkbox'`. It doesn't have any custom properties.
-
-##### default (boolean, optional)
 
 _Example checkbox field_
 ```json
@@ -196,11 +190,22 @@ _Example radio field_
 #### Select form field
 >The select field allows selection via dropdown using the select element.
 
-##### default (number, optional)
->The default can be set to the index of one of the `options`.
-
 ##### options (array, required)
 >`options` is an array of options for the select form field to display. Each option should be an object with a `name`(string). You may optionally add a `group` to some or all of your options.
+
+##### labelProp (string, optional)
+>`labelProp` is what is used for what is shown to the user. Defaults to `name`
+
+##### valueProp (string, optional)
+>`valueProp` is what is used for the value assigned to the model. Defaults to `value`
+
+##### groupProp (string, optional)
+>`groupProp` is what is used to group the options
+
+##### ngOptions (string, optional)
+>If provided, this is used instead of the default `ng-options` giving you full control (and rendering the other options uncessisary.
+
+[Example](http://angular-formly.com/#/example/bootstrap-formly/select)
 
 _Example select field_
 ```json
