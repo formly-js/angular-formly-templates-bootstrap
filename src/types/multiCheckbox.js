@@ -7,9 +7,6 @@ export default ngModule => {
       name: 'multiCheckbox',
       template: require('./multiCheckbox.html'),
       wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-      defaultOptions: {
-        noFormControl: false
-      },
       apiCheck: {
         templateOptions: c.shape({
           options: c.arrayOf(c.object),
@@ -18,6 +15,7 @@ export default ngModule => {
         })
       },
       defaultOptions: {
+        noFormControl: false,
         ngModelAttrs:{
           required: {
             attribute: '',
@@ -44,8 +42,8 @@ export default ngModule => {
         }
 
         function checkValidity(expressionValue){
-          var valid = angular.isArray($scope.model[opts.key]) && 
-            $scope.model[opts.key].length > 0 && 
+          var valid = angular.isArray($scope.model[opts.key]) &&
+            $scope.model[opts.key].length > 0 &&
             expressionValue;
 
           $scope.fc.$setValidity('required', valid);

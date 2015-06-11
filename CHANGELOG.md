@@ -1,3 +1,7 @@
+# 4.3.2
+
+- Fixing issue with required on multiCheckbox. [#26](/../../issues/26) thanks to [@ckniffen](https://github.com/ckniffen)
+
 # 4.3.1
 
 - Addon: Fixing the scope that's passed to `onClick`.
