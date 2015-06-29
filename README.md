@@ -155,6 +155,52 @@ _Example checkbox field_
 ```
 
 ---
+#### multiCheckbox form field
+>The multiCheckbox field allows to have a set of checkboxes which will be bind to a provided model value.
+
+##### options (array, required)
+>`options` is an array of options for the multiCheckbox form field to display. Each option should be an object.
+
+##### labelProp (string, optional)
+>`labelProp` is what is used for what is shown to the user. Defaults to `name`
+
+##### valueProp (string, optional)
+>`valueProp` is what is used for the value assigned to the model. Defaults to `value`
+
+_Example multiCheckbox field_
+```json
+{
+  key: 'roles',
+  type: 'multiCheckbox',
+  templateOptions: {
+    label: 'Roles',
+    options: [{id: 1, title : "Administrator"}, {id: 2, title : "User"}],
+    valueProp: 'id',
+    labelProp: 'title'
+  }
+}
+```
+
+_Example multiCheckbox field with async options_
+```javascript
+{
+  key: 'roles',
+  type: 'multiCheckbox',
+  templateOptions: {
+    label: 'Roles',
+    options: [],
+    valueProp: 'id',
+    labelProp: 'title'
+  },
+  controller: function($scope, DataService) {
+    DataService.getRoles().then(function(roles){
+      // roles: [{id: 1, title : "Administrator"}, {id: 2, title : "User"}]
+       $scope.to.options = roles;
+    });
+  }
+}
+```
+---
 #### Radio form field
 >The radio field allows multiple choice input with a series of linked inputs, with `type='radio'`.
 
