@@ -33,13 +33,22 @@ export default ngModule => {
         };
 
         // initialize the checkboxes check property
-        const modelValue = $scope.model[opts.key];
-        if (angular.isArray(modelValue)) {
-          const valueProp = to.valueProp || 'value';
-          angular.forEach(to.options, function(v, index) {
-            $scope.multiCheckbox.checked[index] = modelValue.indexOf(v[valueProp]) !== -1;
-          });
-        }
+        $scope.$watch('model', function modelWatcher(newModelValue) {
+          var modelValue, valueProp;
+
+          if(Object.keys(newModelValue).length) {
+            modelValue = newModelValue[opts.key];
+
+            $scope.$watch('to.options', function optionsWatcher(newOptionsValues) {
+              if(newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
+                valueProp = to.valueProp || 'value';
+                for (var index = 0; index < newOptionsValues.length; index++) {
+                  $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
+                }
+              }
+            });
+          }
+        }, true);
 
         function checkValidity(expressionValue){
           var valid = angular.isArray($scope.model[opts.key]) &&
