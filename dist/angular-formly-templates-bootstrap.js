@@ -1,4 +1,4 @@
-// angular-formly-templates-bootstrap version 4.3.2 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+// angular-formly-templates-bootstrap version 4.4.0 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -105,15 +105,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	
 	        // initialize the checkboxes check property
-	        var modelValue = $scope.model[opts.key];
-	        if (angular.isArray(modelValue)) {
-	          (function () {
-	            var valueProp = to.valueProp || 'value';
-	            angular.forEach(to.options, function (v, index) {
-	              $scope.multiCheckbox.checked[index] = modelValue.indexOf(v[valueProp]) !== -1;
+	        $scope.$watch('model', function modelWatcher(newModelValue) {
+	          var modelValue, valueProp;
+	
+	          if (Object.keys(newModelValue).length) {
+	            modelValue = newModelValue[opts.key];
+	
+	            $scope.$watch('to.options', function optionsWatcher(newOptionsValues) {
+	              if (newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
+	                valueProp = to.valueProp || 'value';
+	                for (var index = 0; index < newOptionsValues.length; index++) {
+	                  $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
+	                }
+	              }
 	            });
-	          })();
-	        }
+	          }
+	        }, true);
 	
 	        function checkValidity(expressionValue) {
 	          var valid = angular.isArray($scope.model[opts.key]) && $scope.model[opts.key].length > 0 && expressionValue;
@@ -355,7 +362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    prefix: 'angular-formly-bootstrap'
 	  }
 	}));
-	ngModule.constant('formlyBootstrapVersion', ("4.3.2"));
+	ngModule.constant('formlyBootstrapVersion', ("4.4.0"));
 	
 	__webpack_require__(5)(ngModule);
 	__webpack_require__(6)(ngModule);
