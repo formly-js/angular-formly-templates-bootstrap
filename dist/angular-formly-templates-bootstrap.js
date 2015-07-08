@@ -1,4 +1,4 @@
-// angular-formly-templates-bootstrap version 4.4.0 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+// angular-formly-templates-bootstrap version 4.4.1 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -141,8 +141,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          checkValidity(true);
 	        }
 	
-	        if (opts.expressionProperties && opts.expressionProperties.required) {
-	          $scope.$watch($scope.options.expressionProperties.required, function (newValue) {
+	        if (opts.expressionProperties && opts.expressionProperties['templateOptions.required']) {
+	          $scope.$watch(function () {
+	            return $scope.to.required;
+	          }, function (newValue) {
 	            checkValidity(newValue);
 	          });
 	        }
@@ -153,7 +155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              return;
 	            }
 	            checkValidity(true);
-	            unwatchFormControl;
+	            unwatchFormControl();
 	          });
 	        }
 	      }]
@@ -362,7 +364,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    prefix: 'angular-formly-bootstrap'
 	  }
 	}));
-	ngModule.constant('formlyBootstrapVersion', ("4.4.0"));
+	ngModule.constant('formlyBootstrapVersion', ("4.4.1"));
 	
 	__webpack_require__(5)(ngModule);
 	__webpack_require__(6)(ngModule);

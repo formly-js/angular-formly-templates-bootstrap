@@ -1,3 +1,7 @@
+# 4.4.1
+
+- Fixes issue with multiCheckbox `required` and `expressionProperties` [#35](/../../issues/35)
+
 # 4.4.0
 
 - Adding the ability for `multiCheckbox` type to have objects. [#32](/../../issues/32) thanks to [@m0t0r](https://github.com/m0t0r)
