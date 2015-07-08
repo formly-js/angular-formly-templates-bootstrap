@@ -71,8 +71,10 @@ export default ngModule => {
           checkValidity(true);
         }
 
-        if (opts.expressionProperties && opts.expressionProperties.required) {
-          $scope.$watch($scope.options.expressionProperties.required, function(newValue) {
+        if (opts.expressionProperties && opts.expressionProperties['templateOptions.required']) {
+          $scope.$watch(function() {
+            return $scope.to.required;
+          }, function(newValue) {
             checkValidity(newValue);
           });
         }
@@ -83,7 +85,7 @@ export default ngModule => {
               return;
             }
             checkValidity(true);
-            unwatchFormControl;
+            unwatchFormControl();
           });
         }
       }
