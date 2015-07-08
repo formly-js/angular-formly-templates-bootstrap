@@ -16,7 +16,7 @@ export default ngModule => {
       },
       defaultOptions: {
         noFormControl: false,
-        ngModelAttrs:{
+        ngModelAttrs: {
           required: {
             attribute: '',
             bound: ''
@@ -36,11 +36,11 @@ export default ngModule => {
         $scope.$watch('model', function modelWatcher(newModelValue) {
           var modelValue, valueProp;
 
-          if(Object.keys(newModelValue).length) {
+          if (Object.keys(newModelValue).length) {
             modelValue = newModelValue[opts.key];
 
             $scope.$watch('to.options', function optionsWatcher(newOptionsValues) {
-              if(newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
+              if (newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
                 valueProp = to.valueProp || 'value';
                 for (var index = 0; index < newOptionsValues.length; index++) {
                   $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
@@ -50,7 +50,7 @@ export default ngModule => {
           }
         }, true);
 
-        function checkValidity(expressionValue){
+        function checkValidity(expressionValue) {
           var valid = angular.isArray($scope.model[opts.key]) &&
             $scope.model[opts.key].length > 0 &&
             expressionValue;
@@ -71,15 +71,17 @@ export default ngModule => {
           checkValidity(true);
         }
 
-        if(opts.expressionProperties && opts.expressionProperties.required){
-          $scope.$watch($scope.options.expressionProperties.required, function(newValue){
+        if (opts.expressionProperties && opts.expressionProperties.required) {
+          $scope.$watch($scope.options.expressionProperties.required, function(newValue) {
             checkValidity(newValue);
           });
         }
 
-        if($scope.to.required){
-          var unwatchFormControl = $scope.$watch('fc', function(newValue){
-            if(!newValue){ return; }
+        if ($scope.to.required) {
+          var unwatchFormControl = $scope.$watch('fc', function(newValue) {
+            if (!newValue) {
+              return;
+            }
             checkValidity(true);
             unwatchFormControl;
           });
