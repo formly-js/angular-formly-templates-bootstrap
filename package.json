@@ -1,6 +1,6 @@
 {
   "name": "angular-formly-templates-bootstrap",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "Astrism <astrisms@gmail.com>",
   "contributors": [
     "Astrism <astrisms@gmail.com>",
@@ -27,7 +27,9 @@
     "test:ci": "karma start karma.conf.ci.js",
     "watch": "webpack --watch",
     "start": "npm run watch & npm run test",
-    "release": "git push && npm publish && git push --tags"
+    "release": "npm run build && with-package git commit -am pkg.version && with-package git tag pkg.version && git push && npm publish && git push --tags",
+    "release:beta": "npm run release && npm run tag:beta",
+    "tag:beta": "with-package npm dist-tag add pkg.name@pkg.version beta"
   },
   "description": "Angular-Formly plugin which outputs bootstrap compatible form fields.",
   "peerDependencies": {
@@ -47,6 +49,7 @@
     "ng-annotate-loader": "0.0.2",
     "node-libs-browser": "^0.5.0",
     "raw-loader": "^0.5.1",
-    "webpack": "^1.9.6"
+    "webpack": "^1.9.6",
+    "with-package": "0.2.0"
   }
 }
