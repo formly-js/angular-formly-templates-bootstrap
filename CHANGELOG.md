@@ -1,3 +1,7 @@
+# 5.0.0
+
+- Breaking change. There is now an ng-if around the label wrapper that removes it if is not specified. [#34](/../../issues/34)
+
 # 4.4.1
 
 - Fixes issue with multiCheckbox `required` and `expressionProperties` [#35](/../../issues/35)
