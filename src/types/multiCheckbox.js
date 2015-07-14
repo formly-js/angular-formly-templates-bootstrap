@@ -51,11 +51,15 @@ export default ngModule => {
         }, true);
 
         function checkValidity(expressionValue) {
-          var valid = angular.isArray($scope.model[opts.key]) &&
-            $scope.model[opts.key].length > 0 &&
-            expressionValue;
+          var valid;
 
-          $scope.fc.$setValidity('required', valid);
+          if ($scope.to.required) {
+            valid = angular.isArray($scope.model[opts.key]) &&
+              $scope.model[opts.key].length > 0 &&
+              expressionValue;
+
+            $scope.fc.$setValidity('required', valid);
+          }
         }
 
         function setModel() {
