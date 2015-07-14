@@ -1,3 +1,11 @@
+# 5.0.2
+
+- [@m0t0r](https://github.com/m0t0r) fixed [#37](/../../issues/37). Thanks!
+
+# 5.0.1
+
+- Botched the previous release
+
 # 5.0.0
 
 - Breaking change. There is now an ng-if around the label wrapper that removes it if is not specified. [#34](/../../issues/34)
