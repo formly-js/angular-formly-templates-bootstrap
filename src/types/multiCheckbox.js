@@ -1,19 +1,18 @@
 export default ngModule => {
   ngModule.config(addCheckboxType);
 
-  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
-    const c = formlyBootstrapApiCheck;
+  function addCheckboxType(formlyConfigProvider) {
     formlyConfigProvider.setType({
       name: 'multiCheckbox',
       template: require('./multiCheckbox.html'),
       wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-      apiCheck: {
-        templateOptions: c.shape({
-          options: c.arrayOf(c.object),
-          labelProp: c.string.optional,
-          valueProp: c.string.optional
-        })
-      },
+      apiCheck: check => ({
+        templateOptions: {
+          options: check.arrayOf(check.object),
+          labelProp: check.string.optional,
+          valueProp: check.string.optional
+        }
+      }),
       defaultOptions: {
         noFormControl: false,
         ngModelAttrs: {
@@ -23,7 +22,6 @@ export default ngModule => {
           }
         }
       },
-      apiCheckInstance: c,
       controller: /* @ngInject */ function($scope) {
         const to = $scope.to;
         const opts = $scope.options;
