@@ -1,4 +1,4 @@
-// angular-formly-templates-bootstrap version 5.0.2 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+// angular-formly-templates-bootstrap version 6.0.0 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -71,300 +71,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  ngModule.config(addRadioType);
-	
-	  function addRadioType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setType({
-	      name: 'radio',
-	      template: __webpack_require__(19),
-	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-	      defaultOptions: {
-	        noFormControl: false
-	      },
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          options: c.arrayOf(c.object),
-	          labelProp: c.string.optional,
-	          valueProp: c.string.optional
-	        })
-	      },
-	      apiCheckInstance: c
-	    });
-	  }
-	  addRadioType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// some versions of angular don't export the angular module properly,
-	// so we get it from window in this case.
-	'use strict';
-	
-	var angular = __webpack_require__(8);
-	if (!angular.version) {
-	  angular = window.angular;
-	}
-	module.exports = angular;
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.config(addWrappers);
-	
-	  function addWrappers(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setWrapper([{
-	      name: 'bootstrapLabel',
-	      template: __webpack_require__(17),
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          label: c.string,
-	          required: c.bool.optional
-	        })
-	      },
-	      apiCheckInstance: c
-	    }, { name: 'bootstrapHasError', template: __webpack_require__(18) }]);
-	  }
-	  addWrappers.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  __webpack_require__(12)(ngModule);
-	  __webpack_require__(13)(ngModule);
-	  __webpack_require__(14)(ngModule);
-	  __webpack_require__(1)(ngModule);
-	  __webpack_require__(15)(ngModule);
-	  __webpack_require__(16)(ngModule);
-	};
-	
-	module.exports = exports['default'];
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _addons = __webpack_require__(9);
-	
-	var _addons2 = _interopRequireDefault(_addons);
-	
-	var _description = __webpack_require__(10);
-	
-	var _description2 = _interopRequireDefault(_description);
-	
-	exports['default'] = function (ngModule) {
-	  (0, _addons2['default'])(ngModule);
-	  (0, _description2['default'])(ngModule);
-	};
-	
-	module.exports = exports['default'];
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.run(addAddonsManipulator);
-	
-	  function addAddonsManipulator(formlyConfig, formlyBootstrapApiCheck) {
-	    var addonTemplate = __webpack_require__(21);
-	    var addonChecker = formlyBootstrapApiCheck.shape({
-	      'class': formlyBootstrapApiCheck.string.optional,
-	      text: formlyBootstrapApiCheck.string.optional,
-	      onClick: formlyBootstrapApiCheck.func.optional
-	    }).strict.optional;
-	    var api = formlyBootstrapApiCheck.shape({
-	      templateOptions: formlyBootstrapApiCheck.shape({
-	        addonLeft: addonChecker,
-	        addonRight: addonChecker
-	      })
-	    });
-	    formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
-	      if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
-	        return template;
-	      }
-	      formlyBootstrapApiCheck.warn([api], [options]);
-	      return addonTemplate.replace('<formly-transclude></formly-transclude>', template);
-	    });
-	  }
-	  addAddonsManipulator.$inject = ["formlyConfig", "formlyBootstrapApiCheck"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.run(addDescriptionManipulator);
-	
-	  function addDescriptionManipulator(formlyConfig) {
-	    formlyConfig.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
-	      if (angular.isDefined(options.templateOptions.description)) {
-	        var el = document.createElement('div');
-	        el.appendChild(angular.element(template)[0]);
-	        el.appendChild(angular.element('<p id="' + scope.id + '_description"' + 'class="help-block"' + 'ng-if="to.description">' + '{{to.description}}' + '</p>')[0]);
-	        var modelEls = angular.element(el.querySelectorAll('[ng-model]'));
-	        if (modelEls) {
-	          modelEls.attr('aria-describedby', scope.id + '_description');
-	        }
-	        return el.innerHTML;
-	      } else {
-	        return template;
-	      }
-	    });
-	  }
-	  addDescriptionManipulator.$inject = ["formlyConfig"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	var ngModuleName = 'formlyBootstrap';
-	var angular = __webpack_require__(4);
-	var ngModule = angular.module(ngModuleName, [__webpack_require__(2)]);
-	ngModule.constant('formlyBootstrapApiCheck', __webpack_require__(3)({
-	  output: {
-	    prefix: 'angular-formly-bootstrap'
-	  }
-	}));
-	ngModule.constant('formlyBootstrapVersion', ("5.0.2"));
-	
-	__webpack_require__(5)(ngModule);
-	__webpack_require__(6)(ngModule);
-	__webpack_require__(7)(ngModule);
-	
-	exports['default'] = ngModuleName;
-	module.exports = exports['default'];
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
 	  ngModule.config(addCheckboxType);
 	
-	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setType({
-	      name: 'checkbox',
-	      template: __webpack_require__(22),
-	      wrapper: ['bootstrapHasError'],
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          label: c.string
-	        })
-	      },
-	      apiCheckInstance: c
-	    });
-	  }
-	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	exports['default'] = function (ngModule) {
-	  ngModule.config(addCheckboxType);
-	
-	  function addCheckboxType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
+	  function addCheckboxType(formlyConfigProvider) {
 	    formlyConfigProvider.setType({
 	      name: 'multiCheckbox',
-	      template: __webpack_require__(20),
+	      template: __webpack_require__(21),
 	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          options: c.arrayOf(c.object),
-	          labelProp: c.string.optional,
-	          valueProp: c.string.optional
-	        })
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            options: check.arrayOf(check.object),
+	            labelProp: check.string.optional,
+	            valueProp: check.string.optional
+	          }
+	        };
 	      },
 	      defaultOptions: {
 	        noFormControl: false,
@@ -375,7 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	      },
-	      apiCheckInstance: c,
 	      controller: /* @ngInject */["$scope", function controller($scope) {
 	        var to = $scope.to;
 	        var opts = $scope.options;
@@ -445,13 +165,220 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }]
 	    });
 	  }
-	  addCheckboxType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addCheckboxType.$inject = ["formlyConfigProvider"];
 	};
 
 	module.exports = exports['default'];
 
 /***/ },
-/* 14 */
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// some versions of angular don't export the angular module properly,
+	// so we get it from window in this case.
+	'use strict';
+	
+	var angular = __webpack_require__(8);
+	if (!angular.version) {
+	  angular = window.angular;
+	}
+	module.exports = angular;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addWrappers);
+	
+	  function addWrappers(formlyConfigProvider) {
+	    formlyConfigProvider.setWrapper([{
+	      name: 'bootstrapLabel',
+	      template: __webpack_require__(17),
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            label: check.string,
+	            required: check.bool.optional
+	          }
+	        };
+	      }
+	    }, { name: 'bootstrapHasError', template: __webpack_require__(18) }]);
+	  }
+	  addWrappers.$inject = ["formlyConfigProvider"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  __webpack_require__(10)(ngModule);
+	  __webpack_require__(1)(ngModule);
+	  __webpack_require__(12)(ngModule);
+	  __webpack_require__(9)(ngModule);
+	  __webpack_require__(13)(ngModule);
+	  __webpack_require__(14)(ngModule);
+	};
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _addons = __webpack_require__(15);
+	
+	var _addons2 = _interopRequireDefault(_addons);
+	
+	var _description = __webpack_require__(16);
+	
+	var _description2 = _interopRequireDefault(_description);
+	
+	exports['default'] = function (ngModule) {
+	  (0, _addons2['default'])(ngModule);
+	  (0, _description2['default'])(ngModule);
+	};
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addRadioType);
+	
+	  function addRadioType(formlyConfigProvider) {
+	    formlyConfigProvider.setType({
+	      name: 'radio',
+	      template: __webpack_require__(19),
+	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+	      defaultOptions: {
+	        noFormControl: false
+	      },
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            options: check.arrayOf(check.object),
+	            labelProp: check.string.optional,
+	            valueProp: check.string.optional
+	          }
+	        };
+	      }
+	    });
+	  }
+	  addRadioType.$inject = ["formlyConfigProvider"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addCheckboxType);
+	
+	  function addCheckboxType(formlyConfigProvider) {
+	    formlyConfigProvider.setType({
+	      name: 'checkbox',
+	      template: __webpack_require__(20),
+	      wrapper: ['bootstrapHasError'],
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            label: check.string
+	          }
+	        };
+	      }
+	    });
+	  }
+	  addCheckboxType.$inject = ["formlyConfigProvider"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	var ngModuleName = 'formlyBootstrap';
+	var angular = __webpack_require__(4);
+	var ngModule = angular.module(ngModuleName, [__webpack_require__(2)]);
+	ngModule.constant('formlyBootstrapApiCheck', __webpack_require__(3)({
+	  output: {
+	    prefix: 'angular-formly-bootstrap'
+	  }
+	}));
+	ngModule.constant('formlyBootstrapVersion', ("6.0.0"));
+	
+	__webpack_require__(5)(ngModule);
+	__webpack_require__(6)(ngModule);
+	__webpack_require__(7)(ngModule);
+	
+	exports['default'] = ngModuleName;
+	module.exports = exports['default'];
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -476,7 +403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -492,8 +419,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  var template = '<select class="form-control" ng-model="model[options.key]"></select>';
 	
-	  function addSelectType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
+	  function addSelectType(formlyConfigProvider) {
 	    formlyConfigProvider.setType({
 	      name: 'select',
 	      template: template,
@@ -507,18 +433,97 @@ return /******/ (function(modules) { // webpackBootstrap
 	          })
 	        };
 	      },
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          options: c.arrayOf(c.object),
-	          labelProp: c.string.optional,
-	          valueProp: c.string.optional,
-	          groupProp: c.string.optional
-	        })
-	      },
-	      apiCheckInstance: c
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            options: check.arrayOf(check.object),
+	            labelProp: check.string.optional,
+	            valueProp: check.string.optional,
+	            groupProp: check.string.optional
+	          }
+	        };
+	      }
 	    });
 	  }
-	  addSelectType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addSelectType.$inject = ["formlyConfigProvider"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.config(addTextareaType);
+	
+	  function addTextareaType(formlyConfigProvider) {
+	    formlyConfigProvider.setType({
+	      name: 'textarea',
+	      template: '<textarea class="form-control" ng-model="model[options.key]"></textarea>',
+	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
+	      defaultOptions: {
+	        ngModelAttrs: {
+	          rows: { attribute: 'rows' },
+	          cols: { attribute: 'cols' }
+	        }
+	      },
+	      apiCheck: function apiCheck(check) {
+	        return {
+	          templateOptions: {
+	            rows: check.number.optional,
+	            cols: check.number.optional
+	          }
+	        };
+	      }
+	    });
+	  }
+	  addTextareaType.$inject = ["formlyConfigProvider"];
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (ngModule) {
+	  ngModule.run(addAddonsManipulator);
+	
+	  function addAddonsManipulator(formlyConfig, formlyBootstrapApiCheck) {
+	    var addonTemplate = __webpack_require__(22);
+	    var addonChecker = formlyBootstrapApiCheck.shape({
+	      'class': formlyBootstrapApiCheck.string.optional,
+	      text: formlyBootstrapApiCheck.string.optional,
+	      onClick: formlyBootstrapApiCheck.func.optional
+	    }).strict.optional;
+	    var api = formlyBootstrapApiCheck.shape({
+	      templateOptions: formlyBootstrapApiCheck.shape({
+	        addonLeft: addonChecker,
+	        addonRight: addonChecker
+	      })
+	    });
+	    formlyConfig.templateManipulators.preWrapper.push(function (template, options) {
+	      if (!options.templateOptions.addonLeft && !options.templateOptions.addonRight) {
+	        return template;
+	      }
+	      formlyBootstrapApiCheck.warn([api], [options]);
+	      return addonTemplate.replace('<formly-transclude></formly-transclude>', template);
+	    });
+	  }
+	  addAddonsManipulator.$inject = ["formlyConfig", "formlyBootstrapApiCheck"];
 	};
 
 	module.exports = exports['default'];
@@ -534,30 +539,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	
 	exports['default'] = function (ngModule) {
-	  ngModule.config(addTextareaType);
+	  ngModule.run(addDescriptionManipulator);
 	
-	  function addTextareaType(formlyConfigProvider, formlyBootstrapApiCheck) {
-	    var c = formlyBootstrapApiCheck;
-	    formlyConfigProvider.setType({
-	      name: 'textarea',
-	      template: '<textarea class="form-control" ng-model="model[options.key]"></textarea>',
-	      wrapper: ['bootstrapLabel', 'bootstrapHasError'],
-	      defaultOptions: {
-	        ngModelAttrs: {
-	          rows: { attribute: 'rows' },
-	          cols: { attribute: 'cols' }
+	  function addDescriptionManipulator(formlyConfig) {
+	    formlyConfig.templateManipulators.preWrapper.push(function ariaDescribedBy(template, options, scope) {
+	      if (angular.isDefined(options.templateOptions.description)) {
+	        var el = document.createElement('div');
+	        el.appendChild(angular.element(template)[0]);
+	        el.appendChild(angular.element('<p id="' + scope.id + '_description"' + 'class="help-block"' + 'ng-if="to.description">' + '{{to.description}}' + '</p>')[0]);
+	        var modelEls = angular.element(el.querySelectorAll('[ng-model]'));
+	        if (modelEls) {
+	          modelEls.attr('aria-describedby', scope.id + '_description');
 	        }
-	      },
-	      apiCheck: {
-	        templateOptions: c.shape({
-	          rows: c.number.optional,
-	          cols: c.number.optional
-	        })
-	      },
-	      apiCheckInstance: c
+	        return el.innerHTML;
+	      } else {
+	        return template;
+	      }
 	    });
 	  }
-	  addTextareaType.$inject = ["formlyConfigProvider", "formlyBootstrapApiCheck"];
+	  addDescriptionManipulator.$inject = ["formlyConfig"];
 	};
 
 	module.exports = exports['default'];
@@ -584,19 +584,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"radio-group\">\n  <div ng-repeat=\"(key, option) in to.options\" class=\"checkbox\">\n    <label>\n      <input type=\"checkbox\"\n             id=\"{{id + '_'+ $index}}\"\n             ng-model=\"multiCheckbox.checked[$index]\"\n             ng-change=\"multiCheckbox.change()\">\n      {{option[to.labelProp || 'name']}}\n    </label>\n  </div>\n</div>\n"
+	module.exports = "<div class=\"checkbox\">\n\t<label>\n\t\t<input type=\"checkbox\"\n           class=\"formly-field-checkbox\"\n\t\t       ng-model=\"model[options.key]\">\n\t\t{{to.label}}\n\t\t{{to.required ? '*' : ''}}\n\t</label>\n</div>\n"
 
 /***/ },
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\">\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonLeft\"\n         ng-style=\"{cursor: to.addonLeft.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonLeft.onClick(options, this)\">\n        <i class=\"{{to.addonLeft.class}}\" ng-if=\"to.addonLeft.class\"></i>\n        <span ng-if=\"to.addonLeft.text\">{{to.addonLeft.text}}</span>\n    </div>\n    <formly-transclude></formly-transclude>\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonRight\"\n         ng-style=\"{cursor: to.addonRight.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonRight.onClick(options, this)\">\n        <i class=\"{{to.addonRight.class}}\" ng-if=\"to.addonRight.class\"></i>\n        <span ng-if=\"to.addonRight.text\">{{to.addonRight.text}}</span>\n    </div>\n</div>\n"
+	module.exports = "<div class=\"radio-group\">\n  <div ng-repeat=\"(key, option) in to.options\" class=\"checkbox\">\n    <label>\n      <input type=\"checkbox\"\n             id=\"{{id + '_'+ $index}}\"\n             ng-model=\"multiCheckbox.checked[$index]\"\n             ng-change=\"multiCheckbox.change()\">\n      {{option[to.labelProp || 'name']}}\n    </label>\n  </div>\n</div>\n"
 
 /***/ },
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"checkbox\">\n\t<label>\n\t\t<input type=\"checkbox\"\n           class=\"formly-field-checkbox\"\n\t\t       ng-model=\"model[options.key]\">\n\t\t{{to.label}}\n\t\t{{to.required ? '*' : ''}}\n\t</label>\n</div>\n"
+	module.exports = "<div ng-class=\"{'input-group': to.addonLeft || to.addonRight}\">\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonLeft\"\n         ng-style=\"{cursor: to.addonLeft.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonLeft.onClick(options, this)\">\n        <i class=\"{{to.addonLeft.class}}\" ng-if=\"to.addonLeft.class\"></i>\n        <span ng-if=\"to.addonLeft.text\">{{to.addonLeft.text}}</span>\n    </div>\n    <formly-transclude></formly-transclude>\n    <div class=\"input-group-addon\"\n         ng-if=\"to.addonRight\"\n         ng-style=\"{cursor: to.addonRight.onClick ? 'pointer' : 'inherit'}\"\n         ng-click=\"to.addonRight.onClick(options, this)\">\n        <i class=\"{{to.addonRight.class}}\" ng-if=\"to.addonRight.class\"></i>\n        <span ng-if=\"to.addonRight.text\">{{to.addonRight.text}}</span>\n    </div>\n</div>\n"
 
 /***/ }
 /******/ ])

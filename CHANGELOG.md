@@ -1,3 +1,9 @@
+# 6.0.0
+
+## Breaking Changes
+
+- Updating to support the latest `apiCheck` api for types and wrappers. Thanks [@benoror](https://github.com/benoror)
+
 # 5.0.2
 
 - [@m0t0r](https://github.com/m0t0r) fixed [#37](/../../issues/37). Thanks!
