@@ -3,8 +3,7 @@ export default  ngModule => {
 
   const template = `<select class="form-control" ng-model="model[options.key]"></select>`;
 
-  function addSelectType(formlyConfigProvider, formlyBootstrapApiCheck) {
-    const c = formlyBootstrapApiCheck;
+  function addSelectType(formlyConfigProvider) {
     formlyConfigProvider.setType({
       name: 'select',
       template,
@@ -20,15 +19,14 @@ export default  ngModule => {
           }
         };
       },
-      apiCheck: {
-        templateOptions: c.shape({
-          options: c.arrayOf(c.object),
-          labelProp: c.string.optional,
-          valueProp: c.string.optional,
-          groupProp: c.string.optional
-        })
-      },
-      apiCheckInstance: c
+      apiCheck: check => ({
+        templateOptions: {
+          options: check.arrayOf(check.object),
+          labelProp: check.string.optional,
+          valueProp: check.string.optional,
+          groupProp: check.string.optional
+        }
+      })
     });
   }
 };
