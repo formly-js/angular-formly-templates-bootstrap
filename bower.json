@@ -29,7 +29,7 @@
     "webpack.conf.js",
     "webpack.conf.minify.js",
     "karma.conf.js",
-    "karma.conf.cs.js",
+    "karma.conf.ci.js",
     "other",
     "CONTRIBUTING.md",
     "CHANGELOG.md"
