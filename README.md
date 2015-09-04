@@ -106,7 +106,7 @@ Below is a detailed description of each form fields and its custom properties.
 >The input uses the <input> element and allows you to specify it's type via the type property
 
 _Example text field_
-```json
+```javascript
 {
   "type": "input",
   "key": "firstName",
@@ -168,7 +168,7 @@ _Example checkbox field_
 >`valueProp` is what is used for the value assigned to the model. Defaults to `value`
 
 _Example multiCheckbox field_
-```json
+```javascript
 {
   key: 'roles',
   type: 'multiCheckbox',
