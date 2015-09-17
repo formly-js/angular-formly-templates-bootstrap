@@ -55,6 +55,13 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 >`undefined`
 
 ---
+##### labelSrOnly (boolean)
+>`labelSrOnly` is used to add the sr-only class to a label so it will hide on non-screen-readers
+
+###### Default
+>`undefined`
+
+---
 ##### required (boolean)
 >`required` is used to add the required attribute to a form field.
 
