@@ -1,0 +1,23 @@
+(system) files/extensions we don't want
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+.idea/*
+*.DS_Store
+lib-cov
+pids
+logs
+results
+
+node_modules
+bower_components
+!demo/bower_components
+!tests/bower_components
+*.sublime-workspace
+# build folder
+.grunt
+.tmp
