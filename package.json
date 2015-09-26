@@ -1,6 +1,6 @@
 {
   "name": "angular-formly-templates-bootstrap",
-  "version": "6.1.0",
+  "version": "0.0.0-semantically-released.0",
   "author": "Astrism <astrisms@gmail.com>",
   "contributors": [
     "Astrism <astrisms@gmail.com>",
@@ -9,7 +9,7 @@
   "homepage": "http://formly-js.github.io/angular-formly-templates-bootstrap/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/formly-js/angular-formly-templates-bootstrap.git"
+    "url": "https://github.com/formly-js/angular-formly-templates-bootstrap.git"
   },
   "main": "dist/angular-formly-templates-bootstrap.js",
   "licenses": [
@@ -22,14 +22,12 @@
     "build:dist": "webpack",
     "build:minify": "webpack --config webpack.config.minify.js",
     "build": "npm run build:dist; npm run build:minify",
-    "test": "karma start karma.conf.js",
-    "test:single": "karma start karma.conf.js --single-run",
-    "test:ci": "karma start karma.conf.ci.js",
+    "test": "echo 'Still need to set these up...'",
     "watch": "webpack --watch",
-    "start": "npm run watch & npm run test",
-    "release": "npm run build && with-package git commit -am pkg.version && with-package git tag pkg.version && git push && npm publish && git push --tags",
-    "release:beta": "npm run release && npm run tag:beta",
-    "tag:beta": "with-package npm dist-tag add pkg.name@pkg.version beta"
+    "start": "npm run watch",
+    "prepublish": "npm run build",
+    "postpublish": "publish-latest --user-email kent+formly-bot@doddsfamily.us --user-name formly-bot",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "description": "Angular-Formly plugin which outputs bootstrap compatible form fields.",
   "peerDependencies": {
@@ -41,7 +39,10 @@
   "devDependencies": {
     "babel-core": "^5.4.3",
     "babel-loader": "^5.1.2",
+    "commitizen": "1.0.4",
+    "cz-conventional-changelog": "1.1.1",
     "deep-extend": "^0.3.2",
+    "ghooks": "0.3.2",
     "jshint": "^2.7.0",
     "jshint-loader": "^0.8.3",
     "lodash-node": "^3.8.0",
@@ -49,7 +50,17 @@
     "ng-annotate-loader": "0.0.2",
     "node-libs-browser": "^0.5.0",
     "raw-loader": "^0.5.1",
-    "webpack": "^1.9.6",
-    "with-package": "0.2.0"
+    "semantic-release": "^4.3.5",
+    "validate-commit-msg": "1.0.0",
+    "webpack": "^1.9.6"
+  },
+  "license": "MIT",
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "./node_modules/.bin/validate-commit-msg"
+    }
   }
 }
