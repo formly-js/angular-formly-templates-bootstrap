@@ -19,6 +19,7 @@
     }
   ],
   "scripts": {
+    "commit": "git-cz",
     "build:dist": "webpack",
     "build:minify": "webpack --config webpack.config.minify.js",
     "build": "npm run build:dist; npm run build:minify",
@@ -40,7 +41,7 @@
     "babel-core": "^5.4.3",
     "babel-loader": "^5.1.2",
     "commitizen": "1.0.4",
-    "cz-conventional-changelog": "1.1.1",
+    "cz-conventional-changelog": "1.1.0",
     "deep-extend": "^0.3.2",
     "ghooks": "0.3.2",
     "jshint": "^2.7.0",

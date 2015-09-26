@@ -1,7 +1,9 @@
-[![Build Status](https://travis-ci.org/formly-js/angular-formly.svg)](https://travis-ci.org/formly-js/angular-formly)
-[![Coverage Status](https://img.shields.io/coveralls/formly-js/angular-formly.svg)](https://coveralls.io/r/formly-js/angular-formly)
+# angular-formly: Bootstrap Template
 
-## angular-formly: Bootstrap Template
+Status:
+[![npm version](https://img.shields.io/npm/v/angular-formly-templates-bootstrap.svg?style=flat-square)](https://www.npmjs.org/package/angular-formly-templates-bootstrap)
+[![npm downloads](https://img.shields.io/npm/dm/angular-formly-templates-bootstrap.svg?style=flat-square)](http://npm-stat.com/charts.html?package=angular-formly-templates-bootstrap&from=2015-09-01)
+[![Build Status](https://img.shields.io/travis/formly-js/angular-formly-templates-bootstrap.svg?style=flat-square)](https://travis-ci.org/formly-js/angular-formly-templates-bootstrap)
 
 This is a template for angular-formly which adds templates with classes specific to bootstrap. Each field is wrapped in a div. This library is not standalone and requires angular-formly to be present and loaded.
 
