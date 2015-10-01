@@ -1,4 +1,4 @@
-//! angular-formly-templates-bootstrap version 6.1.4 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+//! angular-formly-templates-bootstrap version 6.1.5 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -77,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    prefix: 'angular-formly-bootstrap'
 	  }
 	}));
-	ngModule.constant('formlyBootstrapVersion', ("6.1.4"));
+	ngModule.constant('formlyBootstrapVersion', ("6.1.5"));
 
 	__webpack_require__(6)(ngModule);
 	__webpack_require__(9)(ngModule);
@@ -433,7 +433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ngOptions = options.templateOptions.ngOptions || 'option[to.valueProp || \'value\'] as option[to.labelProp || \'name\'] group by option[to.groupProp || \'group\'] for option in to.options';
 	        return {
 	          ngModelAttrs: _defineProperty({}, ngOptions, {
-	            value: 'ng-options'
+	            value: options.templateOptions.optionsAttr || 'ng-options'
 	          })
 	        };
 	      },
@@ -441,6 +441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return {
 	          templateOptions: {
 	            options: check.arrayOf(check.object),
+	            optionsAttr: check.string.optional,
 	            labelProp: check.string.optional,
 	            valueProp: check.string.optional,
 	            groupProp: check.string.optional

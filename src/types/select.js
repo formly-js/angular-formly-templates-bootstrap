@@ -14,7 +14,7 @@ export default  ngModule => {
         return {
           ngModelAttrs: {
             [ngOptions]: {
-              value: 'ng-options'
+              value: options.templateOptions.optionsAttr || 'ng-options'
             }
           }
         };
@@ -22,6 +22,7 @@ export default  ngModule => {
       apiCheck: check => ({
         templateOptions: {
           options: check.arrayOf(check.object),
+          optionsAttr: check.string.optional,
           labelProp: check.string.optional,
           valueProp: check.string.optional,
           groupProp: check.string.optional
