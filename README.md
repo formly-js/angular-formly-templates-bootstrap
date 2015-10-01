@@ -257,6 +257,9 @@ _Example radio field_
 ##### groupProp (string, optional)
 >`groupProp` is what is used to group the options
 
+##### optionsAttr (string, optional)
+>`optionsAttr` is what is used as the attribute ngOptions will be applied to. Defaults to `ng-options`
+
 ##### ngOptions (string, optional)
 >If provided, this is used instead of the default `ng-options` giving you full control (and rendering the other options uncessisary.
 
