@@ -31,22 +31,18 @@ export default ngModule => {
         };
 
         // initialize the checkboxes check property
-        $scope.$watch('model', function modelWatcher(newModelValue) {
-          var modelValue, valueProp;
+        $scope.$watch('model.' + opts.key, function modelWatcher(modelValue) {
 
-          if (Object.keys(newModelValue).length) {
-            modelValue = newModelValue[opts.key];
-
-            $scope.$watch('to.options', function optionsWatcher(newOptionsValues) {
-              if (newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
-                valueProp = to.valueProp || 'value';
-                for (var index = 0; index < newOptionsValues.length; index++) {
-                  $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
-                }
+          $scope.$watch('to.options', function optionsWatcher(newOptionsValues) {
+            if (newOptionsValues && Array.isArray(newOptionsValues) && Array.isArray(modelValue)) {
+              var valueProp = to.valueProp || 'value';
+              for (var index = 0; index < newOptionsValues.length; index++) {
+                $scope.multiCheckbox.checked[index] = modelValue.indexOf(newOptionsValues[index][valueProp]) !== -1;
               }
-            });
-          }
-        }, true);
+            }
+          });
+          
+        });
 
         function checkValidity(expressionValue) {
           var valid;
