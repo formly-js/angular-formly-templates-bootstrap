@@ -260,6 +260,12 @@ _Example radio field_
 ##### optionsAttr (string, optional)
 >`optionsAttr` is what is used as the attribute ngOptions will be applied to. Defaults to `ng-options`
 
+##### notNull (boolean, optional)
+>`notNull` whether to add an empty null option
+
+##### nullDisplay (string, optional)
+>`nullDisplay` Null option label
+
 ##### ngOptions (string, optional)
 >If provided, this is used instead of the default `ng-options` giving you full control (and rendering the other options uncessisary.
 
@@ -273,6 +279,8 @@ _Example select field_
   "templateOptions": {
     "label": "How do you get around in the city",
     "valueProp": "name",
+    "notNull": true,
+    "nullDisplay": "-- Choose an option --",
     "options": [
       {
         "name": "Car"
