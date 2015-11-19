@@ -7,7 +7,7 @@
     "Astrism <astrisms@gmail.com>",
     "Kent C. Dodds <kent@doddsfamily.us>"
   ],
-  "main": "dist/angular-formly-templates-bootstrap.js",
+  "main": "./dist/angular-formly-templates-bootstrap.js",
   "description": "Angular-Formly plugin which outputs bootstrap compatible form fields.",
   "keywords": [
     "AngularJs",
