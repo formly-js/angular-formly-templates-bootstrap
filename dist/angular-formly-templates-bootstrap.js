@@ -1,4 +1,4 @@
-//! angular-formly-templates-bootstrap version 6.1.7 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
+//! angular-formly-templates-bootstrap version 6.2.0 built with ♥ by Astrism <astrisms@gmail.com>, Kent C. Dodds <kent@doddsfamily.us> (ó ì_í)=óò=(ì_í ò)
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -77,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    prefix: 'angular-formly-bootstrap'
 	  }
 	}));
-	ngModule.constant('formlyBootstrapVersion', ("6.1.7"));
+	ngModule.constant('formlyBootstrapVersion', ("6.2.0"));
 
 	__webpack_require__(6)(ngModule);
 	__webpack_require__(9)(ngModule);
@@ -138,7 +138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      apiCheck: function apiCheck(check) {
 	        return {
 	          templateOptions: {
-	            label: check.string,
+	            label: check.string.optional,
 	            required: check.bool.optional,
 	            labelSrOnly: check.bool.optional
 	          }
