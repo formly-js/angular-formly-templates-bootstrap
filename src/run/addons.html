@@ -2,7 +2,7 @@
     <div class="input-group-addon"
          ng-if="to.addonLeft"
          ng-style="{cursor: to.addonLeft.onClick ? 'pointer' : 'inherit'}"
-         ng-click="to.addonLeft.onClick(options, this)">
+         ng-click="to.addonLeft.onClick(options, this, $event)">
         <i class="{{to.addonLeft.class}}" ng-if="to.addonLeft.class"></i>
         <span ng-if="to.addonLeft.text">{{to.addonLeft.text}}</span>
     </div>
@@ -10,7 +10,7 @@
     <div class="input-group-addon"
          ng-if="to.addonRight"
          ng-style="{cursor: to.addonRight.onClick ? 'pointer' : 'inherit'}"
-         ng-click="to.addonRight.onClick(options, this)">
+         ng-click="to.addonRight.onClick(options, this, $event)">
         <i class="{{to.addonRight.class}}" ng-if="to.addonRight.class"></i>
         <span ng-if="to.addonRight.text">{{to.addonRight.text}}</span>
     </div>
