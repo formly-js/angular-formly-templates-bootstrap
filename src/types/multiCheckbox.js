@@ -71,6 +71,10 @@ export default ngModule => {
           // Must make sure we mark as touched because only the last checkbox due to a bug in angular.
           $scope.fc.$setTouched();
           checkValidity(true);
+          
+          if ($scope.to.onChange) {
+            $scope.to.onChange();
+          }
         }
 
         if (opts.expressionProperties && opts.expressionProperties['templateOptions.required']) {
