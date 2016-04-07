@@ -1,5 +1,5 @@
 <div class="radio-group">
-  <div ng-repeat="(key, option) in to.options" class="radio">
+  <div ng-repeat="(key, option) in to.options" ng-class="{ 'radio': !to.inline, 'radio-inline': to.inline }">
     <label>
       <input type="radio"
              id="{{id + '_'+ $index}}"

@@ -13,7 +13,8 @@ export default ngModule => {
         templateOptions: {
           options: check.arrayOf(check.object),
           labelProp: check.string.optional,
-          valueProp: check.string.optional
+          valueProp: check.string.optional,
+          inline: check.bool.optional,
         }
       })
     });
