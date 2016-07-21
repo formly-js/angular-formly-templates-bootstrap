@@ -9,6 +9,7 @@ export default ngModule => {
         apiCheck: check => ({
           templateOptions: {
             label: check.string.optional,
+            labelClass: check.string.optional,
             required: check.bool.optional,
             labelSrOnly: check.bool.optional,
           }

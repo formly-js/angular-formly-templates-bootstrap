@@ -57,6 +57,13 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 >`undefined`
 
 ---
+##### labelClass (string)
+>`labelClass` is used to add classes to the label.
+
+###### Default
+>`undefined`
+
+---
 ##### labelSrOnly (boolean)
 >`labelSrOnly` is used to add the sr-only class to a label so it will hide on non-screen-readers
 
