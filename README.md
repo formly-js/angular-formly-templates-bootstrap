@@ -92,6 +92,20 @@ NOTE: All of these properties will be under the `templateOptions` property as of
 >`undefined`
 
 ---
+##### labelClass (string)
+>`labelClass` is used to add classes to labels.
+
+###### Default
+>`undefined`
+
+---
+##### fieldDivClass (string)
+>`fieldDivClass` is used to add classes to the parent div element of the field.
+
+###### Default
+>`undefined`
+
+---
 ##### addonLeft (object)
 >`addonLeft` is used to add an add-on on the left of a field. The object accepts three properties: `text` that sets a simple text, `onClick` will add a `cursor:pointer` and an ng-click to the addon (invoked with the options and scope), and `class` that sets classes to the add-on.
 
@@ -324,3 +338,4 @@ Please see the [CONTRIBUTING Guidelines](CONTRIBUTING.md).
 
 A special thanks to [Nimbly](http://gonimbly.com) for creating/sponsoring angular-formly's development.
 Thanks to [Kent C. Dodds](https://github.com/kentcdodds) for his continued support on the project.
+
