@@ -246,7 +246,9 @@ _Example radio field_
 >The select field allows selection via dropdown using the select element.
 
 ##### options (array, required)
->`options` is an array of options for the select form field to display. Each option should be an object with a `name`(string). You may optionally add a `group` to some or all of your options.
+>`options` it can be an array or an object:
+  - an array of options  for the select form field to display. Each option should be an object with a `name`(string). You may optionally add a `group` to some or all of your options.
+  - an object with key an value pairs used in combination with ngOptions ([Example](http://jsbin.com/gikiji/3/edit?js,output)).
 
 ##### labelProp (string, optional)
 >`labelProp` is what is used for what is shown to the user. Defaults to `name`
