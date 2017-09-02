@@ -9,6 +9,8 @@ This is a template for angular-formly which adds templates with classes specific
 
 ### Demo http://angular-formly.com
 
+<a href="https://app.codesponsor.io/link/PKGFLnhDiFvsUA5P4kAXfiPs/formly-js/angular-formly-templates-bootstrap" rel="nofollow"><img src="https://app.codesponsor.io/embed/PKGFLnhDiFvsUA5P4kAXfiPs/formly-js/angular-formly-templates-bootstrap.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
+
 ## Dependencies
 - Required to use these templates:
  - angular
