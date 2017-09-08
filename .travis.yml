@@ -16,5 +16,3 @@ before_script:
   - npm prune
 script:
   - npm t
-after_success:
-  - npm run semantic-release
