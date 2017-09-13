@@ -33,5 +33,11 @@ export default  ngModule => {
         }
       })
     });
+    // multiSelect
+    formlyConfigProvider.setType({
+      name: 'multiSelect',
+      extends: 'select',
+      template: '<select multiple class="form-control" ng-model="model[options.key]"></select>'
+    });
   }
 };
