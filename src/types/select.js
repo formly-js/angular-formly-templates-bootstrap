@@ -23,7 +23,7 @@ export default  ngModule => {
       },
       apiCheck: check => ({
         templateOptions: {
-          options: check.arrayOf(check.object),
+          options: check.oneOfType([check.arrayOf(check.object), check.objectOf(check.string)]),
           optionsAttr: check.string.optional,
           labelProp: check.string.optional,
           valueProp: check.string.optional,
