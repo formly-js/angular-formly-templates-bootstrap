@@ -1,7 +1,7 @@
 <div>
   <label for="{{id}}" class="control-label {{to.labelSrOnly ? 'sr-only' : ''}}" ng-if="to.label">
     {{to.label}}
-    {{to.required ? '*' : ''}}
+    <span ng-if="to.required" class="required-field">*</span>
   </label>
   <formly-transclude></formly-transclude>
 </div>
